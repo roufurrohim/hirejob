@@ -8,11 +8,7 @@ import transactionReducer from './reducers/transaction'
 import promoReducer from './reducers/promo'
 
 const reducers = combineReducers({
-  product: productReducer,
   user: userReducer,
-  cart: cartReducer,
-  promo: promoReducer,
-  transaction: transactionReducer
 
 })
 
