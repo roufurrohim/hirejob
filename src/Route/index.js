@@ -1,12 +1,15 @@
 import { Switch, Route } from 'react-router-dom'
 import Landingpage from '../Pages/Landingpage'
-
+import Home from '../Pages/Home'
+import Guard from './guard'
 const Router =()=>{
     return(
       <Switch>
         <Route path="/" exact>
           <Landingpage />
         </Route>
+
+        <Guard component={Home} />
           {/* path = 
             login = /login/id
             register = /register
