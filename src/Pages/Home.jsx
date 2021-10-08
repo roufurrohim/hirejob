@@ -276,7 +276,7 @@ const Home = () => {
                   </div>
                   <div className="col-lg-6 col-6 ms-lg-0 ms-5">
                       <div className="row">
-                        <div className="col-lg-12">
+                        <div className="col-lg-12 contentInfo">
                           <h4 className="username">{e.name}</h4>
                           <small className="spSkill">{e.special_skill}</small>
                           <div className="my-2 spSkill">
