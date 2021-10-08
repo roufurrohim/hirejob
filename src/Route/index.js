@@ -1,30 +1,22 @@
 import { Switch, Route } from 'react-router-dom'
-import Landing from '../pages/landingpage'
-import Product from '../pages/product'
-import Login from '../pages/login'
-import Signup from '../pages/signup'
-import Detailprd from '../pages/detailprd'
-import Guard from './guard'
-import Payment from '../pages/payment'
-import Profile from '../pages/userProfile'
-import History from '../pages/history'
-import Detailhistory from '../pages/detailHistory'
+import Landingpage from '../Pages/Landingpage'
 
 const Router =()=>{
- 
     return(
       <Switch>
         <Route path="/" exact>
-          <Landing />
+          <Landingpage />
         </Route>
-        <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
-        <Route path="/signup" exact render={(props)=>(<Signup  {...props}/>)}/>
-        <Guard path="/product" exact component={Product}/>
-        <Guard path="/profile" exact component={Profile}/>
-        <Guard path="/history" exact component={History}/>
-        <Guard path="/detailhistory" exact component={Detailhistory}/>
-        <Guard path="/detailprd/:id" exact component={Detailprd}/>
-        <Guard path="/payment" exact component={Payment}/>
+          {/* path = 
+            login = /login/id
+            register = /register
+            home = /home/ {guard}
+            chat = /message {guard}
+            profile = /my-profile {guard}
+            resetpassword = /reset-password 
+            forgetpassword = /forget-password
+            hire = /hire {guard} */}
+
         <Route>
           404 NOT FOUND
         </Route>
