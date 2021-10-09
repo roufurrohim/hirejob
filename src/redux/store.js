@@ -4,7 +4,6 @@ import logger from 'redux-logger'
 
 const reducers = combineReducers({
 
-
 })
 
 const middleware = applyMiddleware(thunk, logger)
