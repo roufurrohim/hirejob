@@ -22,6 +22,7 @@ const setData=(event)=>{
 
 const submit=(event)=>{
   event.preventDefault();
+  history.push('/home')
 }
   return(
     <div>
