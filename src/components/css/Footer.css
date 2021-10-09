@@ -1,0 +1,32 @@
+footer{
+    background-color: #5E50A1;
+}
+.footerLogo{
+    width: auto;
+    height: 40px;
+}
+.footerTagline{
+    margin-top: 20px;
+    width: 280px;
+    font-size: 14px;
+}
+.footerCopyright{
+    font-size: 14px;
+}
+
+@media screen and (max-width:576px){
+    .footerLogo{
+        position: center;
+        display: block;
+        margin: 0 auto;
+    }
+    .footerTagline{
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+        /* margin-top: 10px; */
+    }
+    .footerBottom{
+        padding-bottom: 80px;
+    }
+}
