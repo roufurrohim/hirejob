@@ -1,8 +1,9 @@
 import React from "react"
-import { Container, Row, Col, Nav, NavLink} from "reactstrap"
+import { Container, Row, Col, Nav } from "reactstrap"
 import { API_URL } from "../helpers/env"
 import "./css/Navbar.css"
 import { BsBell, BsEnvelope, BsHouseDoor, BsSearch } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 
 
@@ -19,24 +20,28 @@ const Navbar=()=>{
               src={`${API_URL}helpers/logo_purple.png`}
               alt=""
               onClick={()=> history.push("/")}
+              exact
+
             />
-            <p
-              onClick={()=> history.push("/home")}
-              className={`ms-5 fw-bold mt-3 ${!token ? "d-none" : "homeMenu"} `}
+            <NavLink 
+              to= "/home"
+              activeClassName="textPurple"
+              exact
+              className={`ms-5 fw-bold txtDark  text-decoration-none  ${!token ? "d-none" : "homeMenu"} `}
             >
               Home
-            </p>
+            </NavLink>
           </Col>
           <Col md="6" xs="12">
             {token ? (
               <div>
-                <div className="navUpper mt-md-2">
-                  <div className="me-4 iconNavbar">
+                <div className="navUpper">
+                  <NavLink exact to=""  activeClassName="" className="me-4 iconNavbar txtDark text-decoration-none">
                     <BsBell />
-                  </div>
-                  <div className="me-4 iconNavbar" onClick={()=> history.push("/message")}>
+                  </NavLink>
+                  <NavLink exact to="/message" activeClassName="textPurple" className="me-4 iconNavbar text-decoration-none txtDark">
                     <BsEnvelope />
-                  </div>
+                  </NavLink>
                   <div className="me-4 iconImage" onClick={()=> history.push("/my-profile")}>
                     <img src={`${API_URL}helpers/image3.jpg`} alt="" />
                   </div>
@@ -46,28 +51,28 @@ const Navbar=()=>{
                 <nav className="navbar navbarBottom fixed-bottom navbar-light" role="navigation">
                   <Nav className="w-100">
                     <div className=" d-flex flex-row bg-white p-2 justify-content-around w-100">
-                        <NavLink onClick={()=> history.push("/")} className="nav-link" activeClassName="active">
-                          <div className="row d-flex iconNavbar flex-column justify-content-center align-items-center">
+                        <NavLink exact to="/" className="nav-link txtDark" activeClassName="textPurple">
+                          <div className="row d-flex iconNavbar   flex-column justify-content-center align-items-center">
                             <BsHouseDoor />
                           </div>
                         </NavLink>
-                        <NavLink onClick={()=> history.push("/home")} className="nav-link" activeClassName="active">
-                          <div className="row d-flex iconNavbar flex-column justify-content-center align-items-center">
+                        <NavLink exact to="/home" className="nav-link txtDark" activeClassName="textPurple">
+                          <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <BsSearch />
                           </div>
                         </NavLink>
-                        <NavLink onClick={()=> history.push("")} className="nav-link" activeClassName="active">
-                          <div className="row d-flex iconNavbar flex-column justify-content-center align-items-center">
+                        <NavLink to="#" className="nav-link txtDark" activeClassName="">
+                          <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <BsBell />
                           </div>
                         </NavLink>
-                        <NavLink onClick={()=> history.push("/message")} className="nav-link" activeClassName="active">
-                          <div className="row d-flex iconNavbar flex-column justify-content-center align-items-center">
+                        <NavLink to="/message" exact className="nav-link txtDark" activeClassName="textPurple">
+                          <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <BsEnvelope />
                           </div>
                         </NavLink>
-                        <NavLink onClick={()=> history.push("/profile")} className="nav-link" activeClassName="active">
-                          <div className="row d-flex iconNavbar flex-column justify-content-center align-items-center">
+                        <NavLink to="/my-profile" exact className="nav-link txtDark" activeClassName="textPurple">
+                          <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <div className="iconImage">
                               <img src={`${API_URL}helpers/image3.jpg`} alt="" />
                             </div>
@@ -81,11 +86,11 @@ const Navbar=()=>{
               <div className="d-flex align-items-center justify-content-lg-end justify-content-sm-center btnNavbar">
                 <button
                   className="btn btnPekerja fw-bold text-white"
-                  onClick={()=> history.push("/login/1")}
+                  onClick={()=> history.push("/login/1")} exact
                 >
                   Login Pekerja
                 </button>
-                <button className="btn btnRekruter fw-bold" onClick={()=> history.push("login/2")}>
+                <button className="btn btnRekruter fw-bold" exact onClick={()=> history.push("login/2")}>
                   Login Rekruter
                 </button>
               </div>

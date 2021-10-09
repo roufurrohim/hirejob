@@ -69,6 +69,17 @@ nav{
 .navbarBottom{
     display: none !important;
 }
+.txtDark{
+    color: black !important;
+}
+.txtDark:hover{
+    color: black
+}
+.textPurple{
+    color: #5E50A1 !important;
+    font-weight: bolder !important;
+    border-bottom: 2px solid #5E50A1 !important;
+}
 
 @media screen and (max-width:576px) {
     .btnPekerja{
