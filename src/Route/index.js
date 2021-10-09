@@ -1,30 +1,41 @@
 import { Switch, Route } from 'react-router-dom'
-import Landing from '../pages/landingpage'
-import Product from '../pages/product'
-import Login from '../pages/login'
-import Signup from '../pages/signup'
-import Detailprd from '../pages/detailprd'
+import Landingpage from '../Pages/Landingpage'
+import Login from '../Pages/Login'
+import Reset from '../Pages/Resetpw'
+import Hire from '../Pages/Hirepage'
+import Chat from '../Pages/Chat'
+import Home from '../Pages/Home'
 import Guard from './guard'
-import Payment from '../pages/payment'
-import Profile from '../pages/userProfile'
-import History from '../pages/history'
-import Detailhistory from '../pages/detailHistory'
+
+import CompanyProfiles from '../Pages/Profile'
+import CompanyEditProfiles from '../Pages/EditProfile'
 
 const Router =()=>{
- 
     return(
       <Switch>
         <Route path="/" exact>
-          <Landing />
+          <Landingpage />
         </Route>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
-        <Route path="/signup" exact render={(props)=>(<Signup  {...props}/>)}/>
-        <Guard path="/product" exact component={Product}/>
-        <Guard path="/profile" exact component={Profile}/>
-        <Guard path="/history" exact component={History}/>
-        <Guard path="/detailhistory" exact component={Detailhistory}/>
-        <Guard path="/detailprd/:id" exact component={Detailprd}/>
-        <Guard path="/payment" exact component={Payment}/>
+        <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
+        <Route path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
+        {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
+        <Guard path="/hire" exact component={Hire}/>
+        <Guard path="/message" component={Chat}/>
+
+        <Guard path="/home" component={Home} />
+        <Guard path="/my-profile" component={CompanyProfiles} />
+        <Guard path="/edit-profile" component={CompanyEditProfiles} />
+          {/* path = 
+            login = /login/id
+            register = /register
+            home = /home/ {guard}
+            chat = /message {guard}
+            profile = /my-profile {guard}
+            resetpassword = /reset-password 
+            forgetpassword = /forget-password
+            hire = /hire {guard} */}
+
         <Route>
           404 NOT FOUND
         </Route>
