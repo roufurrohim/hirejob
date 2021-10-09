@@ -2,6 +2,9 @@ import { Switch, Route } from 'react-router-dom'
 import Landingpage from '../Pages/Landingpage'
 import Home from '../Pages/Home'
 import Guard from './guard'
+import CompanyProfiles from '../Pages/Profile'
+import CompanyEditProfiles from '../Pages/EditProfile'
+
 const Router =()=>{
     return(
       <Switch>
@@ -9,7 +12,9 @@ const Router =()=>{
           <Landingpage />
         </Route>
 
-        <Guard component={Home} />
+        <Guard path="/home" component={Home} />
+        <Guard path="/my-profile" component={CompanyProfiles} />
+        <Guard path="/edit-profile" component={CompanyEditProfiles} />
           {/* path = 
             login = /login/id
             register = /register
