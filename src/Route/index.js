@@ -7,6 +7,10 @@ import Hire from '../Pages/Hirepage'
 import Profile from '../Pages/Profile'
 import EditProfiles from '../Pages/EditProfile'
 import Home from '../Pages/Home'
+import Konfirmasipass from '../pages/Konfirmasipass'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
+import RegisterPekerja from '../pages/RegisterPekerja'
 import Guard from './guard'
 
 
@@ -14,7 +18,16 @@ const Router =()=>{
     return(
       <Switch>
         <Route path="/" exact>
-          <Landingpage />
+            <Landingpage />
+        </Route>
+        <Route path="/RegisterPerekrut">
+            <Register />
+        </Route>
+        <Route path="/Konfirmasipass">
+            <Konfirmasipass />
+        </Route>
+        <Route path="/Register">
+            <RegisterPekerja />
         </Route>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
