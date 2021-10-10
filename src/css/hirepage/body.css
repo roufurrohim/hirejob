@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+nav{
+  background-color: teal;
+}
+.hire{
+  background-color: #E5E5E5;
+}
+.hire .asdhire{
+  padding: 30px 0 30px 6%;
+  /* background-color: turquoise; */
+}
+.hire .sechire{
+  padding: 30px 6% 30px 4%;
+  height: 180vh;
+  /* background-color: tomato; */
+}
+.hire .sechire .row{
+  margin: 0;
+  width: 75%;
+  /* background-color: white; */
+}
+.hire .sechire .row .textbox{
+  padding: 0;
+  margin-bottom: 30px;
+  /* background-color: violet; */
+}
+.hire .sechire .row .textbox h1{
+  font-family: Open Sans;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+}
+.hire .sechire .row .textbox p{
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  color:#46505C;
+  line-height: 25px;
+}
+.hire .sechire .row .form{
+  padding: 0;
+  /* background-color: turquoise; */
+}
+.hire .sechire .row .form .inputbox{
+  width: 100%;
+  margin-bottom: 25px;
+  /* background-color: yellowgreen; */
+}
+.hire .sechire .row .form .inputbox select{
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hire .sechire .row .form .inputbox input{
+  width: 100%;
+  height: 50px;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+  border-radius: 4px;
+}
+.hire .sechire .row .form .inputbox textarea{
+  width: 100%;
+  height: 201px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+}
+.hire .sechire .row .form button{
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color:#FBB017;
+}
+.hire .sechire .row form .inputbox p{
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 0 0 5px;
+}
+
+footer{
+  background-color: yellowgreen;
+}
+
+@media screen and (max-width: 576px) {
+  .hire .asdhire{
+    padding: 30px 10px;
+    /* background-color: turquoise; */
+  }
+  .hire .sechire{
+    padding: 30px 10px;
+    height: unset;
+    /* background-color: tomato; */
+  }
+  .hire .sechire .row{
+    margin: 0;
+    width: 100%;
+    /* background-color: white; */
+  }
+}
