@@ -6,7 +6,8 @@ import NavbarHome from "../components/Navbar";
 import FooterHome from "../components/Footer";
 
 const Profile = () => {
-  const { status } = useParams();
+  const { id } = useParams();
+  // console.log(id)
 
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState([
@@ -155,18 +156,18 @@ const Profile = () => {
         <NavbarHome />
       </div>
 
-      <div className={status === '0' ? "d-block" : "d-none"}>
+      <div className={id === '0' ? "d-block" : "d-none"}>
         <Company companydata={user} />
       </div>
 
-      <div className={ status === '1' ? "d-block" : "d-none" }>
+      <div className={ id === '1' ? "d-block" : "d-none" }>
         <Worker
           workerData={data}
           portfolio={data[0].portfolio}
           toHire={hire}
           statusHandle={statusActive}
           statusBtn={statusBtn}
-          status={status}
+          status={id}
           handleEdit={editProfile}
           work={data[0].workExperience}
         />

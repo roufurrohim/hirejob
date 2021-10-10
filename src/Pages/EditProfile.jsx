@@ -5,8 +5,8 @@ import FooterHome from "../components/Footer";
 import EditWorker from "../components/editWorker";
 import CompanyEdit from "../components/editCompanyProfile";
 
-const EditProfiles = () => {
-  const { status } = useParams();
+const EditProfile = () => {
+  const { id } = useParams();
 
   const [user, setUser] = useState({
     id: 1,
@@ -252,14 +252,14 @@ const EditProfiles = () => {
         <NavbarHome />
       </div>
       <div className="bgWorker"></div>
-      <div className={status === "0" ? "d-block" : "d-none"}>
+      <div className={id === '0' ? "d-block" : "d-none"}>
         <CompanyEdit
           companydata={user}
           setTable={changeUserCompany}
           handleSubmit={handleSubmit}
         />
       </div>
-      <div className={status === "1" ? "d-block" : "d-none"}>
+      <div className={id === '1' ? "d-block" : "d-none"}>
         <EditWorker
           worker={worker}
           handleChange={changeWorker}
@@ -288,4 +288,4 @@ const EditProfiles = () => {
     </div>
   );
 };
-export default EditProfiles;
+export default EditProfile;
