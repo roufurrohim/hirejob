@@ -1,0 +1,219 @@
+.bgWorker {
+    width: 100%;
+    height: 300px;
+    background: #5E50A1;
+}
+
+.contentProfile {
+    margin-top: -250px !important;
+}
+
+.colWorker {
+    width: 23.666667% !important;
+}
+
+.content {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+.userWorker {
+    margin-top: 50px;
+    width: 100%;
+    height: 800px;
+    background: #FFF;
+    border-radius: 15px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.imgRounded {
+    text-align: center;
+}
+
+.imgWorker {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.nameWorker {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 56px;
+    color: #1F2A36;
+    margin: 0px;
+}
+
+.spWorker {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1F2A36;
+    margin: 0px;
+}
+
+.cityProfile {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    color: #9EA0A5;
+}
+
+.bioWorker {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #9EA0A5;
+}
+
+.workplace {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #9EA0A5;
+}
+
+.handleBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.btnHire {
+    width: 297px;
+    height: 50px;
+    background-color: #5E50A1 !important;
+    border-radius: 4px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px !important;
+    line-height: 20px;
+    color: #FFF !important;
+}
+
+.nameSkillProfile {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 24px;
+    color: #1F2A36;
+}
+
+.cardSkillsProfile {
+    width: 25%;
+    height: 28px;
+    text-align: center;
+    background: rgba(251, 176, 23, 0.6);
+    border: 1px solid #FBB017;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFF;
+}
+
+.colPortfolio {
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.cardPortfolio {
+    margin-top: 50px !important;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.btnPortfolio {
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 56px !important;
+    color: #1F2A36 !important;
+    border-bottom: 4px solid #5E50A1 !important;
+}
+
+.btnWorkEx {
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 56px !important;
+    color: #9EA0A5 !important;
+    background-color: #FFF !important;
+    border-color: #FFF !important;
+}
+
+.pictPortfolio {
+    width: 219px;
+    height: 148px;
+    margin: 20px 10px;
+}
+
+.workPosition {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #1F2A36;
+}
+
+.workCompany {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #46505C;
+}
+
+.workDate {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #9EA0A5;
+}
+
+.workDescript {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #1F2A36;
+}
+
+@media screen and (max-width: 1440px) {
+    .colWorker {
+        width: 26.666667% !important;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .colWorker {
+        width: 90% !important;
+    }
+
+    .cardSkillsProfile {
+        width: 30%;
+        height: 28px;
+        text-align: center;
+        background: rgba(251, 176, 23, 0.6);
+        border: 1px solid #FBB017;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    .userWorker {
+        height: 108vh;
+    }
+}

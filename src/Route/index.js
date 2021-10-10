@@ -1,9 +1,14 @@
 import { Switch, Route } from 'react-router-dom'
 import Landingpage from '../Pages/Landingpage'
+import Login from '../Pages/Login'
+import Reset from '../Pages/Resetpw'
+import Hire from '../Pages/Hirepage'
+// import Chat from '../Pages/Chat'
+import Profile from '../Pages/Profile'
+import EditProfiles from '../Pages/EditProfile'
 import Home from '../Pages/Home'
 import Guard from './guard'
-import CompanyProfiles from '../Pages/Profile'
-import CompanyEditProfiles from '../Pages/EditProfile'
+
 
 const Router =()=>{
     return(
@@ -11,10 +16,14 @@ const Router =()=>{
         <Route path="/" exact>
           <Landingpage />
         </Route>
-
-        <Guard path="/home" component={Home} />
-        <Guard path="/my-profile" component={CompanyProfiles} />
-        <Guard path="/edit-profile" component={CompanyEditProfiles} />
+        <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
+        <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
+        <Route path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
+        {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
+        {/* <Guard path="/hirepage" exact component={Hire}/> */}
+        <Guard path="/editprofile/:status" exact component={EditProfiles}/>
+        <Guard path="/profile/:status" exact component={Profile}/>
+        <Guard component={Home} />
           {/* path = 
             login = /login/id
             register = /register
