@@ -5,10 +5,9 @@ import Reset from '../Pages/Resetpw'
 import Hire from '../Pages/Hirepage'
 // import Chat from '../Pages/Chat'
 import Profile from '../Pages/Profile'
-import EditProfiles from '../Pages/EditProfile'
+import EditProfile from '../Pages/EditProfile'
 import Home from '../Pages/Home'
 import Guard from './guard'
-
 
 const Router =()=>{
     return(
@@ -18,12 +17,12 @@ const Router =()=>{
         </Route>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
-        <Route path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
+        <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
         {/* <Guard path="/hirepage" exact component={Hire}/> */}
-        <Guard path="/editprofile/:status" exact component={EditProfiles}/>
-        <Guard path="/profile/:status" exact component={Profile}/>
-        <Guard component={Home} />
+        <Guard path="/editprofile/:id" exact component={EditProfile}/>
+        <Guard path="/my-profile/:id" exact component={Profile}/>
+        <Guard path = "/home" component={Home} />
           {/* path = 
             login = /login/id
             register = /register

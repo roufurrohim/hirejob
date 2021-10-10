@@ -14,6 +14,7 @@ nav{
 .navLogo{
     height: 30px;
     width: auto;
+    cursor: pointer;
 }
 .navHome {
     font-size: 16px;
@@ -56,6 +57,7 @@ nav{
     object-fit: cover;
     border-radius: 100%;
     position: relative;
+    cursor: pointer;
 }
 
 .iconImage img{
