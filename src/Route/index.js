@@ -7,10 +7,8 @@ import Hire from '../Pages/Hirepage'
 import Profile from '../Pages/Profile'
 import EditProfile from '../Pages/EditProfile'
 import Home from '../Pages/Home'
-import Konfirmasipass from '../pages/Konfirmasipass'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import RegisterPekerja from '../pages/RegisterPekerja'
+import Konfirmasipass from '../Pages/Konfirmasipass'
+import Register from '../Pages/Register'
 import Guard from './guard'
 
 const Router =()=>{
@@ -19,16 +17,11 @@ const Router =()=>{
         <Route path="/" exact>
             <Landingpage />
         </Route>
-        <Route path="/RegisterPerekrut">
-            <Register />
-        </Route>
-        <Route path="/Konfirmasipass">
-            <Konfirmasipass />
-        </Route>
-        <Route path="/Register">
-            <RegisterPekerja />
-        </Route>
+        <Route path="/Konfirmasipass" exact render={(props)=>(<Konfirmasipass  {...props}/>)}/>
+        <Route path="/register/:id" exact render={(props)=>(<Register  {...props}/>)}/>
+        <Guard path="/editprofile/:id" exact component={EditProfile}/>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
+        <Route path="/login/:id" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
         <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}

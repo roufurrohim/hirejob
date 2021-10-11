@@ -1,4 +1,4 @@
-import '../css/Register.css'
+import './css/Register.css'
 import {
     Row,
     Col,
