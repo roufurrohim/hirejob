@@ -17,14 +17,11 @@ const Router =()=>{
         <Route path="/" exact>
             <Landingpage />
         </Route>
-        <Route path="/Konfirmasipass">
-            <Konfirmasipass />
-        </Route>
-        <Route path="/Register/:id">
-            <Register />
-        </Route>
+        <Route path="/Konfirmasipass" exact render={(props)=>(<Konfirmasipass  {...props}/>)}/>
+        <Route path="/register/:id" exact render={(props)=>(<Register  {...props}/>)}/>
         <Guard path="/editprofile/:id" exact component={EditProfile}/>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
+        <Route path="/login/:id" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
         <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}

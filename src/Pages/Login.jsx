@@ -1,13 +1,13 @@
-// import Footer from "../components/Footer"
-// import Navbar from "../components/Navbar"
-import "bootstrap/dist/css/bootstrap.min.css"
 import '../Pages/css/Logsign.css'
 import React, { useState } from "react"
-import {Link, useHistory} from 'react-router-dom'
+import { useHistory, useParams} from 'react-router-dom'
+import {LOGIN} from '../redux/action/users'
 
 
-const Login =(props)=>{
+const Login =()=>{
+const { id }= useParams()
 const history = useHistory()
+const [errorMsg, setErrorMsg] = useState("");
 const [user, setUser] = useState({
   email: "",
   password: "",
@@ -20,8 +20,17 @@ const setData=(event)=>{
   })
 }
 
-const submit=(event)=>{
-  event.preventDefault();
+const submit=(e)=>{
+  e.preventDefault();
+  LOGIN(user)
+  .then((response)=>{
+    history.push("/")
+    setErrorMsg("");
+  }).catch((err)=>{
+    
+    // console.log(err)
+    setErrorMsg(err.error);
+  })
 }
   return(
     <div>
@@ -43,12 +52,13 @@ const submit=(event)=>{
                 <div className="signbox">
                   <h3>Email</h3>
                   <div className="textbox">
-                    <input type="text" placeholder="Enter your email address" name="email" value={user.email} onChange={setData}></input>
+                    <input type="email" required placeholder="Enter your email address" name="email" value={user.email} onChange={setData}></input>
                   </div>
                   <h3>Kata Sandi</h3>
                   <div className="textbox">
-                    <input type="password" placeholder="Enter your password" value={user.password} name="password" onChange={setData}></input>
+                    <input type="password" required placeholder="Enter your password" value={user.password} name="password" onChange={setData}></input>
                   </div>
+                  <p className="text-danger">{errorMsg}</p>
                   <h3 className="forgot">Lupa kata sandi?</h3>
                 </div>
               </form>
@@ -58,7 +68,7 @@ const submit=(event)=>{
                 </div>
                 <div className="txt">
                   <p>Anda belum punya akun?</p>
-                  <p id="p2" style={{cursor:'pointer'}}>&nbsp;Daftar disini</p>
+                  <p id="p2" style={{cursor:'pointer'}} onClick={()=>history.push(`/register/${id}`)}>&nbsp;Daftar disini</p>
                 </div>
               </div>
             </section>
