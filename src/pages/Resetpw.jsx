@@ -1,7 +1,7 @@
 // import Footer from "../components/Footer"
 // import Navbar from "../components/Navbar"
 import "bootstrap/dist/css/bootstrap.min.css"
-import '../Pages/css/Logsign.css'
+import './css/Logsign.css'
 import React, { useState } from "react"
 // import { LOGIN } from "../redux/actions/users"
 // import {Link, useHistory} from 'react-router-dom'

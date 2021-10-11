@@ -21,13 +21,12 @@ const Navbar=()=>{
               alt=""
               onClick={()=> history.push("/")}
               exact
-
             />
             <NavLink 
               to= "/home"
               activeClassName="textPurple"
               exact
-              className={`ms-5 fw-bold txtDark  text-decoration-none  ${!token ? "d-none" : "homeMenu"} `}
+              className={`ms-5 fw-bold txtDark mt-3 text-decoration-none  ${!token ? "d-none" : "homeMenu"} `}
             >
               Home
             </NavLink>
@@ -35,7 +34,7 @@ const Navbar=()=>{
           <Col md="6" xs="12">
             {token ? (
               <div>
-                <div className="navUpper">
+                <div className="navUpper mt-md-2">
                   <NavLink exact to=""  activeClassName="" className="me-4 iconNavbar txtDark text-decoration-none">
                     <BsBell />
                   </NavLink>

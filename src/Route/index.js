@@ -18,11 +18,10 @@ const Router =()=>{
         </Route>
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
-        <Route path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
+        {/* <Route path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/> */}
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
         <Guard path="/hire" exact component={Hire}/>
         <Guard path="/message" component={Chat}/>
-
         <Guard path="/home" component={Home} />
         <Guard path="/my-profile" component={CompanyProfiles} />
         <Guard path="/edit-profile" component={CompanyEditProfiles} />

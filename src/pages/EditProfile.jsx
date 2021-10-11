@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
 import CompanyEdit from '../components/editCompanyProfile'
-import Navbar from "../components/Navbar"
-import Footer from '../components/Footer'
 
 const CompanyEditProfiles = () => {
     const [user, setUser] = useState(
@@ -34,11 +32,10 @@ const CompanyEditProfiles = () => {
     }
     return(
         <>
-        <Navbar/>
+        <div>nav</div>
         <div>
             <CompanyEdit companydata={user} setTable={changeUser} handleSubmit={handleSubmit} />
         </div>
-        <Footer/>
         </>
     )
 }

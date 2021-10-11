@@ -1,7 +1,7 @@
 // import Footer from "../components/Footer"
 // import Navbar from "../components/Navbar"
 import "bootstrap/dist/css/bootstrap.min.css"
-import '../Pages/css/Logsign.css'
+import './css/Logsign.css'
 import React, { useState } from "react"
 import {Link, useHistory} from 'react-router-dom'
 
@@ -50,7 +50,9 @@ const submit=(event)=>{
                   <div className="textbox">
                     <input type="password" placeholder="Enter your password" value={user.password} name="password" onChange={setData}></input>
                   </div>
+                  <Link className='linked' to='/reset-password'>
                   <h3 className="forgot">Lupa kata sandi?</h3>
+                  </Link>
                 </div>
               </form>
               <div className="buttonlgn">
@@ -59,7 +61,10 @@ const submit=(event)=>{
                 </div>
                 <div className="txt">
                   <p>Anda belum punya akun?</p>
-                  <p id="p2" style={{cursor:'pointer'}}>&nbsp;Daftar disini</p>
+                  <p id="p2" style={{cursor:'pointer'}}>&nbsp;</p>
+                  <Link to='/register'>
+                  <p>Daftar disini</p>
+                  </Link>
                 </div>
               </div>
             </section>

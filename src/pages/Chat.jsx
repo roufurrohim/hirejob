@@ -24,7 +24,7 @@ const chat=()=> {
             <section className='col-lg-8 d-flex pt-5 secchat'>
               <div className='chatroom'>
                 <header className='hchat'>
-
+                  
                 </header>
               </div>
             </section>
