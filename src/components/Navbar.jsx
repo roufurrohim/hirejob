@@ -90,7 +90,7 @@ const Navbar=()=>{
                 >
                   Login Pekerja
                 </button>
-                <button className="btn btnRekruter fw-bold" exact onClick={()=> history.push("login/2")}>
+                <button className="btn btnRekruter fw-bold" exact onClick={()=> history.push("login/0")}>
                   Login Rekruter
                 </button>
               </div>
