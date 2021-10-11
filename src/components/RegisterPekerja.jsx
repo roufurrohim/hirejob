@@ -7,7 +7,7 @@ import {
 import logo from '../images/logo.svg'
 import {Link} from 'react-router-dom'
 
-const Register = ({insertData, Data}) => {
+const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
 
     return(
         <Container fluid={true}>  
@@ -21,20 +21,21 @@ const Register = ({insertData, Data}) => {
                     <h1>Halo, Pewpeople</h1>
                     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</div>       
                 </div>        
-                <form className="formRegister">
+                <form onSubmit={handleRegister} className="formRegister">
                     
-                    <label>Perusahaan</label>
-                    <input 
-                      type="nama"
-                      value={Data.nama}
-                      onChange={insertData}
-                    placeholder="Masukan nama perusahaan"
+                    <label>Nama</label>
+                    <input
+                    type="text"
+                    name="nama"
+                    onChange={insertData}
+                    value={Data.nama}
+                    placeholder="Masukan nama panjang"
                     />
             
                     <label>Email</label>
                     <input
                     type="email"
-                    value={Data.email}
+                    name="email"
                     onChange={insertData}
                     placeholder="Masukan alamat Email"
                     />
@@ -42,23 +43,27 @@ const Register = ({insertData, Data}) => {
                     <label>No handphone</label>
                     <input 
                     type="number"
-                    value={Data.phone_number}
+                    name="no_telp"
                     onChange={insertData}
+                    value={Data.no_telp}
                     placeholder="Masukan no handphone"
                     />
             
                     <label>Katasandi</label>
                     <input
                     type="password"
-                    value={Data.password}
-                    onChange={insertData}
+                    name="newPassword"
+                    onChange={insertPass}
+                    value={pass.newPassword}
                     placeholder="Masukan kata sandi"
                     />
             
                     <label>Konfirmasi kata sandi</label>
                     <input 
                     type="password"
-                    onChange={insertData}
+                    onChange={insertPass}
+                    value={pass.komfirmasiPassword}
+                    name="komfirmasiPassword"
                     placeholder="Masukan konfirmasi kata sandi"
                     />
                     <button>Daftar</button>  
