@@ -1,32 +1,13 @@
-import '../css/Register.css'
+import './css/Register.css'
 import {
-    FormGroup,
-    Form,
-    Label,
-    Input,
     Row,
     Col,
     Container
   } from "reactstrap";
 import logo from '../images/logo.svg'
-import { useState } from 'react'
 import {Link} from 'react-router-dom'
 
-const Register = () => {
-
-    const [Data, setData] = useState({
-        nama:"",
-        email:"",
-        phone_number:"",
-        password:""
-    })
-
-    const insertData = (e) => {
-        setData({
-            [e.target.name]:e.target.value
-        })
-
-    }
+const Register = ({insertData, Data}) => {
 
     return(
         <Container fluid={true}>  
@@ -41,12 +22,13 @@ const Register = () => {
                     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</div>       
                 </div>        
                 <form className="formRegister">
-                    <label>Nama</label>
-                    <input
-                    type="text"
-                    value={Data.nama}
-                    onChange={insertData}
-                    placeholder="Masukan nama panjang"
+                    
+                    <label>Perusahaan</label>
+                    <input 
+                      type="nama"
+                      value={Data.nama}
+                      onChange={insertData}
+                    placeholder="Masukan nama perusahaan"
                     />
             
                     <label>Email</label>
