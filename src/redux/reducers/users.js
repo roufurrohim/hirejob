@@ -1,43 +1,61 @@
-import { getAllUser, getAllUserPending, getAllUserError, getDetailUser, getDetailUserPending, getDetailUserError, getMyDetailUser, getMyDetailUserPending, getMyDetailUserError } from "../../helpers/var";
-
-const userState = {
-  getAll: [],
-  loadAll: false,
-  errorAll: false,
-  errorMessageAll: '',
-  getDetail: {},
-  loadDetail: false,
-  errorDetail: false,
-  errorMessageDetail: '',
-  myDetail: {},
-  loadMyDetail: false,
-  errorMyDetail: false,
-  errorMessageMyDetail: '',
+const initialState = {
+    all: [],
+    loadAll: false,
+    errorAll: false,
+    errorAllMessage: "Data Not Found",
+    details: [],
+    loadDetails: false,
+    errorDetails: false,
+    errorDetailsMessage: "Data Not Found",
 }
 
-const userReducer = (state=userState, action) => {
-  switch (action.type) {
-    case getAllUserPending:
-      return {...state, loadAll: true}
-    case getAllUser:
-      return {...state, loadAll: false, getAll: action.payload}
-    case getAllUserError:
-      return {...state, loadAll: false, errorAll: true, errorMessageAll: action.payload}
-    case getDetailUserPending:
-      return {...state, loadDetail: true}
-    case getDetailUser:
-      return {...state, loadDetail: false, getDetail: action.payload}
-    case getDetailUserError:
-      return {...state, loadDetail: false, errorDetail: true, errorMessageDetail: action.payload}
-    case getMyDetailUserPending:
-      return {...state, loadMyDetail: true}
-    case getMyDetailUser:
-      return {...state, loadMyDetail: false, myDetail: action.payload}
-    case getMyDetailUserError:
-      return {...state, loadMyDetail: false, errorMyDetail: true, errorMessageMyDetail: action.payload}
-    default:
-      return state
-  }
+const usersReducer = (state=initialState, action) => {
+    switch (action.type) {
+        case "GET_USERS_PENDING":
+            return {
+                ...state,
+                loadAll: true
+            }
+
+        case "GET_USERS_FULLFILLED":
+            return {
+                ...state,
+                loadAll: false,
+                all: action.payload,
+                errorAllMessage: "Get User Success"
+            }
+
+        case "GET_USERS_REJECTED":
+            return {
+                ...state,
+                loadAll: false,
+                errorAllMessage: action.payload
+            }
+
+        case "GET_DETAILS_USER_PENDING":
+            return {
+                ...state,
+                loadDetails: true
+            }
+
+        case "GET_DETAILS_USER_FULLFILLED":
+            return {
+                ...state,
+                loadDetails: false,
+                details: action.payload,
+                errorDetailsMessage: "Get User Success"
+            }
+
+        case "GET_DETAILS_USER_REJECTED":
+            return {
+                ...state,
+                loadDetails: false,
+                errorDetailsMessage: action.payload
+            }
+    
+        default:
+            return state
+    }
 }
 
-export default userReducer
+export default usersReducer

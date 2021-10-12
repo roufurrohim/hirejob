@@ -1,6 +1,60 @@
 import axios from "axios";
 import { API_URL } from "../../helpers/env";
-import { getAllUser, getAllUserPending, getAllUserError, getDetailUser, getDetailUserPending, getDetailUserError, getMyDetailUser, getMyDetailUserPending, getMyDetailUserError } from "../../helpers/var";
+
+
+export const ACTION_GET_USERS = () => {
+    
+    
+    const token = localStorage.getItem('token')
+    
+    const headers = {
+        token: token
+    }
+
+    return (dispatch) => {
+        dispatch(usersPending())
+        axios.get(`${API_URL}users`, {headers} ).then((res) => {
+            dispatch(usersFullfilled(res.data.result))
+        }).catch((err) => {
+            dispatch(usersRejected(err))
+        })
+    }
+}
+
+export const ACTION_GET_USERS_QUERY = (query) => {
+    const { search, sortby } = query
+    const token = localStorage.getItem('token')
+    
+    const headers = {
+        token: token
+    }
+
+    return (dispatch) => {
+        dispatch(usersPending())
+        axios.get(`${API_URL}users?search=${search}&sortby=${sortby}`, {headers} ).then((res) => {
+            dispatch(usersFullfilled(res.data.result))
+        }).catch((err) => {
+            dispatch(usersRejected(err))
+        })
+    }
+}
+
+export const ACTION_GET_DETAILS_USER = (id) => {
+    const token = localStorage.getItem('token')
+    const headers = {
+        token,
+    }
+    console.log(headers)
+    return (dispatch) => {
+        dispatch(userDetailsPending())
+        axios.get(`${API_URL}user/${id}`, {headers}).then((res) => {
+            dispatch(userDetailsFullfilled(res.data.result))
+        }).catch((err) => {
+            dispatch(userDetailsRejected(err))
+        })
+    }
+}
+
 
 export const LOGIN = (form) =>{
     return new Promise((resolve, reject)=>{
@@ -28,60 +82,43 @@ export const REGISTER = (data) =>{
         })
     })
 }
-export const GET_ALL_USER = (data) => {
-    return (dispatch) => {
-      dispatch({
-        type: getAllUserPending
-      })
-      axios.get(`${API_URL}users?search=${!data?'':data}&field=id`).then((response) => {
-        dispatch({
-          type: getAllUser,
-          payload: response.data.result
-        })
-      }).catch((err) => {
-        dispatch({
-          type: getAllUserError,
-          payload: `terjadi kesalahan, ${err}`
-        })
-      })
+
+const usersPending = () => {
+    return {
+        type: "GET_USERS_PENDING"
     }
-  }
-  export const GET_DETAIL_USER = (id) => {
-    const token = localStorage.getItem("token")
-    // {headers: {token: token} }
-    return (dispatch) => {
-      dispatch({
-        type: getDetailUserPending
-      })
-      axios.get(`${API_URL}user/${id}`).then((response) => {
-        dispatch({
-          type: getDetailUser,
-          payload: response.data.result[0]
-        })
-      }).catch((err) => {
-        dispatch({
-          type: getDetailUserError,
-          payload: `terjadi kesalahan, ${err}`
-        })
-      })
+}
+
+const usersFullfilled = (payload) => {
+    return {
+        type: "GET_USERS_FULLFILLED",
+        payload
     }
-  }
-  export const GET_MY_DETAIL = () => {
-    const token = localStorage.getItem("token")
-    return (dispatch) => {
-      dispatch({
-        type: getMyDetailUserPending
-      })
-      axios.get(`${API_URL}mydetail`, {headers: {token: token}}).then((response) => {
-        dispatch({
-          type: getMyDetailUser,
-          payload: response.data.result[0]
-        })
-      }).catch((err) => {
-        dispatch({
-          type: getMyDetailUserError,
-          payload: `terjadi kesalahan, ${err}`
-        })
-      })
+}
+
+const usersRejected = (payload) => {
+    return {
+        type: "GET_USERS_REJECTED",
+        payload : "An error occurred!"
     }
-  }
+}
+
+const userDetailsPending = () => {
+    return {
+        type: "GET_DETAILS_USER_PENDING"
+    }
+}
+
+const userDetailsFullfilled = (payload) => {
+    return {
+        type: "GET_DETAILS_USER_FULLFILLED",
+        payload
+    }
+}
+
+const userDetailsRejected = (payload) => {
+    return {
+        type: "GET_DETAILS_USER_REJECTED",
+        payload : "An error occurred!"
+    }
+}

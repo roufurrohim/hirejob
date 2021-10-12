@@ -69,7 +69,7 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     <button>Daftar</button>  
                     <div className="info">Anda sudah punya akun? <Link to="/login">Masuk disini</Link></div>
                 </form>
-                <div className="info2">Anda sudah punya akun? <Link to="/login">Masuk disini</Link></div>
+                <div className="info2">Anda sudah punya akun? <Link to="/login/1">Masuk disini</Link></div>
 
             </Col>
         </Row>

@@ -9,7 +9,7 @@ const Guard =({component: Component, ...rest})=>{
           return <Component {...props}/>
         }else{
           alert('harap login terlebih dahulu')
-          return <Redirect to= "/login"/>
+          return <Redirect to= "/"/>
         }
       }
     }/>

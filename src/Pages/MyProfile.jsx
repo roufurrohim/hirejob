@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Company from "../components/companyProfile";
 import Worker from "../components/Worker";
 import NavbarHome from "../components/Navbar";
 import FooterHome from "../components/Footer";
@@ -11,8 +12,27 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   const { id } = useParams();
+  // console.log(id)
 
-  const statusUser = localStorage.getItem("status")
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useState([
+    {
+      id: 1,
+      name: "Gilang Rangga",
+      sector: "Financial",
+      image:
+        "https://images.unsplash.com/photo-1633423010179-a9e26e1f7c8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=725&q=80",
+      city: "Purwokerto, Jawa Tengah",
+      descriptions:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.",
+      email: "gilang@mail.com",
+      no_telp: "0891234",
+      ig: "@rangga1917",
+      github: "github.com/gilang666",
+      gitlap: "gilangggg",
+      linkedin: "linkedin.com/gilang",
+    },
+  ]);
 
   const data = [
     {
@@ -123,7 +143,6 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(ACTION_GET_DETAILS_USER(id))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   const [statusBtn, setStatusBtn] = useState(false);
@@ -140,20 +159,26 @@ const Profile = () => {
 
   const statusActive = () => {
     setStatusBtn(!statusBtn);
+    console.log(statusBtn);
   };
+
+  const statusUser = localStorage.getItem("status")
 
   return (
     <div>
       <div className="navbarHome border-bottom">
         <NavbarHome />
       </div>
-
-      <div>
-        {
-          dataStore.loadDetails !== true ? 
+      {  dataStore.loadDetails !== true ?
         
-          <Worker
-          workerData={dataStore.details}
+        <div>
+          <div className={statusUser === '0' ? "d-block" : "d-none"}>
+        <Company companydata={user} />
+      </div>
+
+      <div className={ statusUser === '1' ? "d-block" : "d-none" }>
+        <Worker
+          workerData={dataStore.details[0]}
           portfolio={data[0].portfolio}
           toHire={hire}
           statusHandle={statusActive}
@@ -162,15 +187,17 @@ const Profile = () => {
           handleEdit={editProfile}
           work={data[0].workExperience}
         />
-        : 
-        <div className="d-flex justify-content-center align-items-center">
+      </div>
+        </div>
+        
+        
+        :
+        <div className=" m-5 d-flex justify-content-center align-items-center">
+        <div className="h-100">
           <h1>Loading...</h1>
         </div>
-
-        }
-        
       </div>
-
+      }
       <div className="h-25 footerHome">
         <FooterHome />
       </div>

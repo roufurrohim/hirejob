@@ -18,9 +18,7 @@ const Registers = () => {
         email:"",
         no_telp:"",
     })
-    console.log(Data, "ini data")
-    console.log(pass, "ini pass")
-
+    
     const insertData = (e) => {
         setData({ 
             ...Data,

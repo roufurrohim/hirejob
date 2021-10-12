@@ -27,7 +27,7 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     name="nama"
                     onChange={insertData}
                     value={Data.nama}
-                    placeholder="Masukan nama panjang"
+                    placeholder="Masukan nama perusahaan"
                     />
             
                     <label>Email</label>
@@ -67,7 +67,7 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     <button type="submit">Daftar</button>  
                     <div className="info">Anda sudah punya akun? <Link to="/login">Masuk disini</Link></div>
                 </form>
-                <div className="info2">Anda sudah punya akun? <Link to="/login">Masuk disini</Link></div>
+                <div className="info2">Anda sudah punya akun? <Link to="/login/0">Masuk disini</Link></div>
 
             </Col>
         </Row>
