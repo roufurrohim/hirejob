@@ -1,4 +1,4 @@
-import { getAllUser, getAllUserPending, getAllUserError, getDetailUser, getDetailUserPending, getDetailUserError } from "../../helper/var";
+import { getAllUser, getAllUserPending, getAllUserError, getDetailUser, getDetailUserPending, getDetailUserError, getMyDetailUser, getMyDetailUserPending, getMyDetailUserError } from "../../helpers/var";
 
 const userState = {
   getAll: [],
@@ -9,6 +9,10 @@ const userState = {
   loadDetail: false,
   errorDetail: false,
   errorMessageDetail: '',
+  myDetail: {},
+  loadMyDetail: false,
+  errorMyDetail: false,
+  errorMessageMyDetail: '',
 }
 
 const userReducer = (state=userState, action) => {
@@ -25,6 +29,12 @@ const userReducer = (state=userState, action) => {
       return {...state, loadDetail: false, getDetail: action.payload}
     case getDetailUserError:
       return {...state, loadDetail: false, errorDetail: true, errorMessageDetail: action.payload}
+    case getMyDetailUserPending:
+      return {...state, loadMyDetail: true}
+    case getMyDetailUser:
+      return {...state, loadMyDetail: false, myDetail: action.payload}
+    case getMyDetailUserError:
+      return {...state, loadMyDetail: false, errorMyDetail: true, errorMessageMyDetail: action.payload}
     default:
       return state
   }
