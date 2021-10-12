@@ -1,0 +1,12 @@
+.bodychat{
+  font-family: opensans;
+  background-color: #E5E5E5;
+  height: 150vh;
+  padding: 0 6%;
+}
+.asdchat{
+  height: 100vh;
+}
+.sec{
+  display: flex;
+}
