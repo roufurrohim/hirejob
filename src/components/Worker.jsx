@@ -2,7 +2,10 @@ import React from "react";
 import "./css/Worker.css";
 import { IoLocationOutline } from "react-icons/io5";
 
-const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, portfolio, work, handleEdit }) => {
+const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit, portfolio}) => {
+
+  console.log(workerData,"in data worker di component")
+
   return (
     <div>
       <div className="bgWorker"></div>
@@ -82,7 +85,7 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, portfolio
                            
                           Portfolio
                          
-                         </button>
+                        </button>
                         
                         <button className={statusBtn ? "btn btnPortfolio" : "btn btnWorkEx"}
                         onClick={statusHandle}
@@ -112,8 +115,8 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, portfolio
                     
                     <div className={ !statusBtn ? "d-none" : "col-lg-12 "}>
                       <div className="row p-4">
-                          {
-                            work.map((e, i) => (
+                          {           
+                             e.work_experiences.map((e, i) => (
                               <div key={i} className="col-lg-9 my-3 mx-5">
                                 <div className="row">
                                   <div className="col-lg-12">

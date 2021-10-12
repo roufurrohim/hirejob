@@ -114,6 +114,10 @@
     border-radius: 20px !important;
 }
 
+.paginat {
+    cursor: pointer;
+}
+
 .footerHome {
     margin-top: 100px;
     height: 400px !important;

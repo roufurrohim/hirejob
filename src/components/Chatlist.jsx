@@ -4,7 +4,7 @@ import "./css/Chatlist.css"
 import { useHistory } from "react-router-dom"
 
 const List = ({dataChat1, changeReceiver}) => {
-  const {listUser, detail} = dataChat1
+  const {listUser, detail } = dataChat1
   // console.log(listUser)
   return(
     <body className='chatlist'>

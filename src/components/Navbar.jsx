@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom"
 const Navbar=()=>{
   const history = useHistory()
   const token = localStorage.getItem("token")
+  const image = localStorage.getItem("image")
   return (
     <nav className=" p-3">
       <Container>
@@ -42,8 +43,12 @@ const Navbar=()=>{
                   <NavLink exact to="/message" activeClassName="textPurple" className="me-4 iconNavbar text-decoration-none txtDark">
                     <BsEnvelope />
                   </NavLink>
-                  <div className="me-4 iconImage" onClick={()=> history.push("/my-profile")}>
-                    <img src={`${API_URL}helpers/image3.jpg`} alt="" />
+                  <div className="me-4 iconImage" onClick={()=> history.push("/profile")}>
+                    {image?(
+                      <img src={`${API_URL}uploads/${image}`} alt="" />
+                    ):(
+                      <img src={`${API_URL}helpers/image3.jpg`} alt="" />
+                    )}
                   </div>
                 </div>
                 {/* bottom nav */}
@@ -71,10 +76,14 @@ const Navbar=()=>{
                             <BsEnvelope />
                           </div>
                         </NavLink>
-                        <NavLink to="/my-profile" exact className="nav-link txtDark" activeClassName="textPurple">
+                        <NavLink to="/profile" exact className="nav-link txtDark" activeClassName="textPurple">
                           <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <div className="iconImage">
-                              <img src={`${API_URL}helpers/image3.jpg`} alt="" />
+                              {image?(
+                                <img src={`${API_URL}uploads/${image}`} alt="" />
+                              ):(
+                                <img src={`${API_URL}helpers/image3.jpg`} alt="" />
+                              )}
                             </div>
                           </div>
                         </NavLink>
