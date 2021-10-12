@@ -1,11 +1,11 @@
-.sec .chatrow{
+.chatrow{
   font-family: opensans;
   padding: 0 0 20px 0;
   margin: 0;
   border-radius: 4px;
   background-color: white;
 }
-.sec .chatrow .chatnav{
+.chatrow .chatnav{
   width: 100%;
   height: 60px;
   display: flex;
@@ -13,57 +13,62 @@
   border-bottom: 1px solid #E2E5ED;
   padding: 0 4%;
 }
-.sec .chatrow .chatnav img{
+.chatrow .chatnav .arrow{
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.chatrow .chatnav img{
   height: 40px;
   width: 40px;
   border-radius: 40px;
 }
-.sec .chatrow .chatnav .menu{
+.chatrow .chatnav .menu{
   width: 20px;
   height: 20px;
   border-radius: 0;
   cursor: pointer;
 }
-.sec .chatrow .chatnav .textbox{
+.chatrow .chatnav .textbox{
   height: 64px;
   width: 90%;
   margin-left: 20px;
   display: flex;
   align-items: center;
 }
-.sec .chatrow .chatnav .textbox p{
+.chatrow .chatnav .textbox p{
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   margin: 0;
 }
-.sec .chatrow .chatbox::-webkit-scrollbar {
+.chatrow .chatbox::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.sec .chatrow .chatbox {
+.chatrow .chatbox {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;
   padding: 10px 5% 0 5%;
 }
-.sec .chatrow .chatbox .chatlist{
+.chatrow .chatbox .chatlist{
   margin: 20px 0;
 }
-.sec .chatrow .chatbox .chatlist img{
+.chatrow .chatbox .chatlist img{
   width: 54px;
   height: 54px;
   margin: 0;
   border-radius: 20px;
 }
-.sec .chatrow .chatbox .chatlist{
+.chatrow .chatbox .chatlist{
   align-items: center;
 }
-.sec .chatrow .chatbox .chatlist .text{
+.chatrow .chatbox .chatlist .text{
   padding: 10px 30px;
 }
-.sec .chatrow .chatbox .chatlist .text p{
-  font-family: Rubik;
+.chatrow .chatbox .chatlist .text p{
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -72,14 +77,12 @@
   text-align: left;
   color: white;
 }
-
-
-.sec .chatrow .sendbox{
+.chatrow .sendbox{
   width: 100%;
   height: 60px;
   padding: 0 5%;
 }
-.sec .chatrow .sendbox .send{
+.chatrow .sendbox .send{
   display: flex;
   align-items: center;
   height: 60px;
@@ -88,32 +91,32 @@
   padding: 0 10px;
   background-color: #f7f5f5;
 }
-.sec .chatrow .sendbox .send form{
+.chatrow .sendbox .send form{
   width: 80%;
 }
-.sec .chatrow .sendbox .send form input{
+.chatrow .sendbox .send form input{
   height: 60px;
   width: 100%;
   border: none;
   background-color: transparent;
   padding-left: 20px;
 }
-.sec .chatrow .sendbox .send .rowbox{
+.chatrow .sendbox .send .rowbox{
   display: flex;
   justify-content: center;
   width: 20%;
 }
-.sec .chatrow .sendbox .send .rowbox .imgbox{
+.chatrow .sendbox .send .rowbox .imgbox{
   width: 31%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.sec .chatrow .sendbox .send .rowbox .imgbox img{
+.chatrow .sendbox .send .rowbox .imgbox img{
   width: 23px;
   height: 23px;
 }
-.sec .chatrow .sendbox .send .rowbox .imgbox .round{
+.chatrow .sendbox .send .rowbox .imgbox .round{
   position: absolute;
   width: 11px;
   height: 11px;
