@@ -32,7 +32,7 @@ const usersReducer = (state=initialState, action) => {
                 errorAllMessage: action.payload
             }
 
-        case "GET_DETAILS_USER_PENDING":
+        case "GET_DETAILS_USERS_PENDING":
             return {
                 ...state,
                 loadDetails: true
@@ -41,8 +41,8 @@ const usersReducer = (state=initialState, action) => {
         case "GET_DETAILS_USER_FULLFILLED":
             return {
                 ...state,
-                loadDetails: false,
                 details: action.payload,
+                loadDetails: false,
                 errorDetailsMessage: "Get User Success"
             }
 

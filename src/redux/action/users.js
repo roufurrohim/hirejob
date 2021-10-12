@@ -1,56 +1,74 @@
 import axios from "axios";
 import { API_URL } from "../../helpers/env";
 
-
 export const ACTION_GET_USERS = () => {
-    
-    
     const token = localStorage.getItem('token')
-    
     const headers = {
         token: token
     }
 
     return (dispatch) => {
-        dispatch(usersPending())
+        dispatch({
+            type: "GET_USERS_PENDING"
+        })
         axios.get(`${API_URL}users`, {headers} ).then((res) => {
-            dispatch(usersFullfilled(res.data.result))
+            dispatch({
+                type: "GET_USERS_FULLFILLED",
+                payload: res.data.result
+            })
         }).catch((err) => {
-            dispatch(usersRejected(err))
+            dispatch({
+                type: "GET_USER_REJECTED",
+                payload : "An error occurred!"
+            })
         })
     }
 }
 
-export const ACTION_GET_USERS_QUERY = (query) => {
-    const { search, sortby } = query
-    const token = localStorage.getItem('token')
+// export const ACTION_GET_USERS_QUERY = (query) => {
+//     const { search, sortby } = query
+//     const token = localStorage.getItem('token')
     
-    const headers = {
-        token: token
-    }
+//     const headers = {
+//         token: token
+//     }
+//     return (dispatch) => {
+//         dispatch({
+//             type: "GET_USERS_PENDING"
+//         })
+//         axios.get(`${API_URL}users?search=${search}&sortby=${sortby}`, {headers} ).then((res) => {
+//             dispatch({
+//                 type: "GET_USERS_FULLFILLED",
+//                 payload: res.data.result
+//             })
+//         }).catch((err) => {
+//             dispatch({
+//                 type: "GET_USER_REJECTED",
+//                 payload : "An error occurred!"
+//             })
+//         })
+//     }
+// }
 
-    return (dispatch) => {
-        dispatch(usersPending())
-        axios.get(`${API_URL}users?search=${search}&sortby=${sortby}`, {headers} ).then((res) => {
-            dispatch(usersFullfilled(res.data.result))
-        }).catch((err) => {
-            dispatch(usersRejected(err))
-        })
-    }
-}
-
-export const ACTION_GET_DETAILS_USER = (id) => {
-    const token = localStorage.getItem('token')
+export const ACTION_GET_DETAILS_USER = (id, token) => {
     const headers = {
         token,
     }
-    console.log(headers)
+    console.log("ini di actions")
     return (dispatch) => {
-        dispatch(userDetailsPending())
+        dispatch({
+            type: "GET_DETAILS_USERS_PENDING"
+        })
         axios.get(`${API_URL}user/${id}`, {headers}).then((res) => {
-            dispatch(userDetailsFullfilled(res.data.result))
+            dispatch({
+                type: "GET_DETAILS_USER_FULLFILLED",
+                payload: res.data.result
+            })
         }).catch((err) => {
-            dispatch(userDetailsRejected(err))
+            dispatch({
+                type: "GET_DETAILS_USER_REJECTED",
+                payload : "An error occurred!"
+            })
         })
     }
 }
@@ -83,42 +101,4 @@ export const REGISTER = (data) =>{
     })
 }
 
-const usersPending = () => {
-    return {
-        type: "GET_USERS_PENDING"
-    }
-}
 
-const usersFullfilled = (payload) => {
-    return {
-        type: "GET_USERS_FULLFILLED",
-        payload
-    }
-}
-
-const usersRejected = (payload) => {
-    return {
-        type: "GET_USERS_REJECTED",
-        payload : "An error occurred!"
-    }
-}
-
-const userDetailsPending = () => {
-    return {
-        type: "GET_DETAILS_USER_PENDING"
-    }
-}
-
-const userDetailsFullfilled = (payload) => {
-    return {
-        type: "GET_DETAILS_USER_FULLFILLED",
-        payload
-    }
-}
-
-const userDetailsRejected = (payload) => {
-    return {
-        type: "GET_DETAILS_USER_REJECTED",
-        payload : "An error occurred!"
-    }
-}
