@@ -1,12 +1,29 @@
 .bodychat{
   font-family: opensans;
   background-color: #E5E5E5;
-  height: 150vh;
-  padding: 0 6%;
 }
 .asdchat{
   height: 100vh;
 }
-.sec{
+
+.secchat .chatroom{
+  height: 583px;
+  width: 89%;
+  border-radius: 4px;
+  background-color: white;
+}
+.secchat .chatroom .hchat{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #E2E5ED;
   display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.secchat .chatroom .hchat p{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  margin: 0;
 }
