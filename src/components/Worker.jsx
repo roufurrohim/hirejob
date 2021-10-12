@@ -99,7 +99,7 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                           {
                             portfolio.map((e, i) => (
                               <div key={i} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                <img src={`${API_URL}uploads/${e.picture}`} alt="portfolio" className="pictPortfolio" />
+                                <img src={e.picture} alt="portfolio" className="pictPortfolio" />
                                 <h5>{e.name_apps}</h5>
                               </div>
                             ))
