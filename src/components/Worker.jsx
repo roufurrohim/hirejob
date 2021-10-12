@@ -1,8 +1,9 @@
 import React from "react";
 import "./css/Worker.css";
+import { API_URL } from "../helpers/env"
 import { IoLocationOutline } from "react-icons/io5";
 
-const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit, portfolio}) => {
+const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit}) => {
 
   console.log(workerData,"in data worker di component")
 
@@ -16,7 +17,7 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
             <div className="col-lg-3 pe-lg-5 colWorker">
               <div className=" userWorker pt-5">
                 <div className="imgRounded">
-                  <img src={e.pict} alt="imageWorker" className="imgWorker" />
+                  <img src={`${API_URL}uploads/${e.image}`} alt="imageWorker" className="imgWorker" />
                 </div>
                 <div className="text-start mt-lg-3 ms-4">
                   <h3 className="nameWorker">{e.name}</h3>
@@ -34,9 +35,9 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                   <p className="bioWorker">{e.description}</p>
                 </div>
 
-                <div className="row mt-3">
+                <div className="row mt-3 d-flex justify-content-center">
                   {/* <div className="col-12 d-none handleBtn"> */}
-                  <div className={status === '1' ? "col-12 handleBtn" : "d-none" }>
+                  <div className={status === '1' ? "col-11 handleBtn" : "d-none" }>
                     <button
                       type="button"
                       onClick={() => handleEdit('1')}
@@ -63,9 +64,9 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                     {e.skills.map((e, i) => (
                       <div
                         key={i}
-                        className="me-lg-4 me-3 my-2 cardSkillsProfile"
+                        className="cardSkillsProfile"
                       >
-                        <p>{e.name}</p>
+                        <p style={{margin:'0'}}>{e.name_skill}</p>
                       </div>
                     ))}
                   </div>
@@ -77,69 +78,59 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                 <div className="row cardPortfolio">
                   <div className="col-lg-12 p-4">
                     <nav className="border-bottom">
-                      
                       <div className="d-flex">
                         <button
                          className={!statusBtn ? "btn me-5 btnPortfolio" : "btn me-5 btnWorkEx"}
                          onClick={statusHandle}>
-                           
                           Portfolio
-                         
                         </button>
-                        
                         <button className={statusBtn ? "btn btnPortfolio" : "btn btnWorkEx"}
                         onClick={statusHandle}
                         >
-                          
                           Work Experience
-                        
-                        </button>  
+                        </button>
 
                       </div>
-                        
                     </nav>
                   </div>
 
                     <div className={ statusBtn ? "d-none" : "col-lg-12"}>
                       <div className="row">
                           {
-                            portfolio.map((e, i) => (
+                            e.portfolios.map((e, i) => (
                               <div key={i} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                <img src={e.picture} alt="portfolio" className="pictPortfolio" />
-                                <h5>{e.name}</h5>
+                                <img src={`${API_URL}uploads/${e.image}`} alt="portfolio" className="pictPortfolio" />
+                                <h5>{e.name_apps}</h5>
                               </div>
                             ))
-                          }            
+                          }
                       </div>
                     </div>
-                    
                     <div className={ !statusBtn ? "d-none" : "col-lg-12 "}>
                       <div className="row p-4">
-                          {           
+                          {
                              e.work_experiences.map((e, i) => (
                               <div key={i} className="col-lg-9 my-3 mx-5">
                                 <div className="row">
                                   <div className="col-lg-12">
-                                    <h5 className="workPosition">{e.position}</h5>    
+                                    <h5 className="workPosition">{e.position}</h5>
                                   </div>
 
                                   <div className="col-lg-12">
-                                    <small className="workCompany">{e.company}</small>    
+                                    <small className="workCompany">{e.company}</small>
                                   </div>
 
                                   <div className="col-lg-12">
-                                    <small className="workDate">{e.startWork} - {e.endWork}</  small>    
+                                    <small className="workDate">{e.start_work} - {e.end_work}</  small>
                                   </div>
 
                                   <div className="col-lg-12 mt-3">
-                                    <p className="workDescript">{e.description}</p>    
+                                    <p className="workDescript">{e.description}</p>
                                   </div>
-                                  
                                 </div>
-                                
                               </div>
                             ))
-                          }            
+                          }
                       </div>
                     </div>
 

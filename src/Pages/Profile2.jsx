@@ -41,46 +41,6 @@ const Profile = () => {
     console.log(statusBtn);
   };
 
-  
-// portofolio masih statik klo udah ada bisa di apus
-const portfolio = [
-  {
-    id: 1,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-  {
-    id: 2,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-  {
-    id: 3,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-  {
-    id: 4,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-  {
-    id: 5,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-  {
-    id: 6,
-    name: "Reminder App",
-    picture:
-      "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  },
-]
 
 
   return (
@@ -104,7 +64,6 @@ const portfolio = [
           ):(
             <Worker
             workerData={dataStore.details}
-            portfolio={portfolio}
             toHire={hire}
             statusHandle={statusActive}
             statusBtn={statusBtn}

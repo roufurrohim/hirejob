@@ -112,6 +112,7 @@ export const LOGIN = (form) =>{
             localStorage.setItem('token', response.data.result.token)
             localStorage.setItem("status", response.data.result.user.status);
             localStorage.setItem("image", response.data.result.user.image);
+            localStorage.setItem("id", response.data.result.user.id);
         }).catch((err)=>{
             reject(err.response.data)
         })
