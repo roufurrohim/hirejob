@@ -3,6 +3,8 @@ import Landingpage from '../Pages/Landingpage'
 import Login from '../Pages/Login'
 import Reset from '../Pages/Resetpw'
 import Hire from '../Pages/Hirepage'
+import Chat from '../Pages/Chat'
+import MyProfile from '../Pages/MyProfile'
 import Profile from '../Pages/Profile'
 import EditProfile from '../Pages/EditProfile'
 import Home from '../Pages/Home'
@@ -17,6 +19,7 @@ const Router =()=>{
         <Route path="/" exact>
             <Landingpage />
         </Route>
+        
         <Route path="/Konfirmasipass" exact render={(props)=>(<Konfirmasipass  {...props}/>)}/>
         <Route path="/register/:id" exact render={(props)=>(<Register  {...props}/>)}/>
         <Guard path="/editprofile/:id" exact component={EditProfile}/>
@@ -24,21 +27,13 @@ const Router =()=>{
         <Route path="/login/:id" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
         <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
-        {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
-        {/* <Guard path="/hirepage" exact component={Hire}/> */}
+        <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/>
+        <Guard path="/hirepage" exact component={Hire}/>
         <Guard path="/message" component={Message}/>
         <Guard path="/editprofile/:id" exact component={EditProfile}/>
-        <Guard path="/my-profile/:id" exact component={Profile}/>
+        <Guard path="/my-profile/:id" exact component={MyProfile}/>
+        <Guard path="/profile/:id" exact component={Profile}/>
         <Guard path = "/home" component={Home} />
-          {/* path = 
-            login = /login/id
-            register = /register
-            home = /home/ {guard}
-            chat = /message {guard}
-            profile = /my-profile {guard}
-            resetpassword = /reset-password 
-            forgetpassword = /forget-password
-            hire = /hire {guard} */}
 
         <Route>
           404 NOT FOUND
