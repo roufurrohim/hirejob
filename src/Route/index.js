@@ -27,7 +27,6 @@ const Router =()=>{
         <Route path="/login/:id" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/reset-password" exact render={(props)=>(<Reset  {...props}/>)}/>
         <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
-        <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/>
         <Guard path="/hirepage" exact component={Hire}/>
         <Guard path="/message" component={Message}/>
         <Guard path="/editprofile/:id" exact component={EditProfile}/>
