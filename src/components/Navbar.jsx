@@ -43,7 +43,7 @@ const Navbar=()=>{
                   <NavLink exact to="/message" activeClassName="textPurple" className="me-4 iconNavbar text-decoration-none txtDark">
                     <BsEnvelope />
                   </NavLink>
-                  <div className="me-4 iconImage" onClick={()=> history.push("/profile")}>
+                  <div className="me-4 iconImage" onClick={()=> history.push("/my-profile")}>
                     {image?(
                       <img src={`${API_URL}uploads/${image}`} alt="" />
                     ):(
@@ -76,7 +76,7 @@ const Navbar=()=>{
                             <BsEnvelope />
                           </div>
                         </NavLink>
-                        <NavLink to="/profile" exact className="nav-link txtDark" activeClassName="textPurple">
+                        <NavLink to="/my-profile" exact className="nav-link txtDark" activeClassName="textPurple">
                           <div className="row d-flex iconNavbar flex-column  justify-content-center align-items-center">
                             <div className="iconImage">
                               {image?(
