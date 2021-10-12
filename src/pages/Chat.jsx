@@ -5,8 +5,8 @@ import {
     Col,
     Row,
 } from "reactstrap";
-import { GET_DETAIL_USER, GET_ALL_USER, GET_MY_DETAIL } from "../redux/actions/users"
-import { LOGINMSG, EMITGETMSG, EMITSENDMSG, ONHISTORYMSG, ONLISTMSG } from "../redux/actions/message"
+import { GET_DETAIL_USER, GET_ALL_USER, GET_MY_DETAIL } from "../redux/action/users"
+import { LOGINMSG, EMITGETMSG, EMITSENDMSG, ONHISTORYMSG, ONLISTMSG } from "../redux/action/message"
 import './css/Chat.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
