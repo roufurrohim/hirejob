@@ -130,7 +130,34 @@ export const REGISTER = (data) =>{
         })
     })
 }
+export const UPDATE_USER = (id,form) =>{
+  return new Promise((resolve, reject)=>{
+      // console.log(form)
+      const token = localStorage.getItem("token")
+      const headers = {
+          "Content-Type": "multipart/form-data",
+          "token" : token
+      }
+      axios.put(`${API_URL}user/${id}`, form,  {headers})
+      .then((response)=>{
+          console.log(response)
+          resolve(response.data)
+      }).catch((err)=>{
+          reject(err.response.data)
+      })
+  })
+}
 
+export const FORGET_PASS = (data) =>{
+  return new Promise((resolve, reject)=>{
+      axios.post(`${API_URL}forget-pass`, data)
+      .then((response)=>{
+          resolve(response.data)
+      }).catch((err)=>{
+          reject(err.response.data)
+      })
+  })
+}
 
 const userDetailsPending = () => {
     return {
