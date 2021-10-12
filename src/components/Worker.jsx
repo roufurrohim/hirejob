@@ -3,7 +3,7 @@ import "./css/Worker.css";
 import { API_URL } from "../helpers/env"
 import { IoLocationOutline } from "react-icons/io5";
 
-const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit, portfolio}) => {
+const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit}) => {
 
   console.log(workerData,"in data worker di component")
 
@@ -97,10 +97,10 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                     <div className={ statusBtn ? "d-none" : "col-lg-12"}>
                       <div className="row">
                           {
-                            portfolio.map((e, i) => (
+                            e.portfolios.map((e, i) => (
                               <div key={i} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                <img src={e.picture} alt="portfolio" className="pictPortfolio" />
-                                <h5>{e.name}</h5>
+                                <img src={`${API_URL}uploads/${e.image}`} alt="portfolio" className="pictPortfolio" />
+                                <h5>{e.name_apps}</h5>
                               </div>
                             ))
                           }

@@ -24,6 +24,7 @@ const submit=(e)=>{
   e.preventDefault();
   LOGIN(user)
   .then((response)=>{
+    // console.log(response.user.id)
     history.push("/")
     setErrorMsg("");
   }).catch((err)=>{
@@ -59,7 +60,7 @@ const submit=(e)=>{
                     <input type="password" required placeholder="Enter your password" value={user.password} name="password" onChange={setData}></input>
                   </div>
                   <p className="text-danger">{errorMsg}</p>
-                  <h3 className="forgot">Lupa kata sandi?</h3>
+                  <h3 className="forgot" onClick={()=> history.push("/forget-password")}>Lupa kata sandi?</h3>
                 </div>
               </form>
               <div className="buttonlgn">
