@@ -2,8 +2,9 @@ import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Listmsg.css"
 import { useHistory } from "react-router-dom"
+import { FaArrowLeft } from 'react-icons/fa';
 
-const List = ({dataChat, sendMessage, setMsg}) => {
+const List = ({dataChat, sendMessage, setMsg, setCn}) => {
   const {receiver, detailById, detail, listMsgHistory, listMsg, msg} = dataChat
   console.log(dataChat)
   return(
@@ -11,6 +12,10 @@ const List = ({dataChat, sendMessage, setMsg}) => {
       <body className="chatrow" style={{width:'100%'}}>
         {receiver?(
           <nav className='chatnav'>
+            <FaArrowLeft className="arrow" onClick={()=>setCn({
+              asd: 'col-lg-4 col-12 pt-5 asdchat',
+              sec: 'col-lg-8 pt-5 sec'
+            })}/>
             <img src={`${API_URL}uploads/${detailById.image}`}  alt="" srcset="" />
             <div className='textbox'>
             <p>{detailById.name}</p>
@@ -19,7 +24,7 @@ const List = ({dataChat, sendMessage, setMsg}) => {
         ):(
           <nav className='chatnav' style={{backgroundColor:'transparent'}}></nav>
         )}
-        <div className="chatbox" style={{ width:"100%", height: "69vh", overflow: "scroll" }}>
+        <div className="chatbox" style={{ width:"100%", height: "50vh", overflow: "scroll" }}>
           {receiver?
           listMsgHistory.map((e, i) => {
               if(e.receiver === receiver || e.sender === receiver) {
@@ -28,7 +33,7 @@ const List = ({dataChat, sendMessage, setMsg}) => {
                     {e.sender === detail.id ? 
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'green', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
@@ -69,7 +74,7 @@ const List = ({dataChat, sendMessage, setMsg}) => {
                     {e.sender === detail.id ?
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'lightgreen', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
