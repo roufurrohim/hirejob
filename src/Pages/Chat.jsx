@@ -1,14 +1,7 @@
 
 import React, {useEffect, useState} from "react";
-import {
-    Container,
-    Col,
-    Row,
-} from "reactstrap";
-import { GET_DETAIL_USER, GET_ALL_USER, GET_MY_DETAIL } from "../redux/action/users"
-import { LOGINMSG, EMITGETMSG, EMITSENDMSG, ONHISTORYMSG, ONLISTMSG } from "../redux/action/message"
+import { ACTION_GET_DETAILS2_USER, ACTION_GET_USERS, ACTION_GET_MYDETAILS_USER } from "../redux/action/users"
 import './css/Chat.css'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector, useDispatch } from "react-redux"
 import { API_URL } from "../helpers/env";
@@ -24,7 +17,6 @@ const Chat=(props)=> {
   const [msg, setMsg] = useState("")
   const [listMsg, setListMsg] = useState([]);
   const [listMsgHistory, setListMsgHistory]= useState([]);
-  const [listUser, setListUser] = useState([]);
   const [receiver, setReceiver]= useState('');
   const [cn, setCn] = useState({
     asd: 'col-lg-4 col-12 pt-5 asdchat',
@@ -33,15 +25,12 @@ const Chat=(props)=> {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   const message = useSelector(state => state.message)
-  const detail = user.myDetail
-  const detailById = user.getDetail
-  // const [dataChat, setDataChat] = useState({})
+  const detail = user.mydetails
+  const detailById = user.details2
+  
   const getData = (id) =>{
-    dispatch(GET_MY_DETAIL())
-    dispatch(GET_ALL_USER())
-    // dispatch(ONLISTMSG())
-    
-    
+    dispatch(ACTION_GET_MYDETAILS_USER())
+    dispatch(ACTION_GET_USERS())  
   }
   socket.emit('login', detail.id);
   useEffect(() => {
@@ -50,13 +39,10 @@ const Chat=(props)=> {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const [updData, setUpd]=useState()
+  const [listUser, setListUser] = useState([]);
   const changeReceiver = (id) => {
-    dispatch(GET_DETAIL_USER(id))
+    dispatch(ACTION_GET_DETAILS2_USER(id))
     setReceiver(id);
-    // const data = {
-    //   receiver: id,
-    //   sender: detail.id
-    // }
     setCn({
       asd: 'col-lg-4 col-12 pt-5 asdnone',
       sec: 'col-lg-8 pt-5 none'
@@ -65,16 +51,10 @@ const Chat=(props)=> {
     setListMsg([]);
     socket.on("history-messages", (message) =>{
       setListMsgHistory(message);
-      console.log(message)
     })
   }
   const sendMessage = (e) => {
     e.preventDefault();
-    // const data = {
-    //   sender: detail.id,
-    //   receiver,
-    //   msg
-    // }
     socket.emit("send-message", {
       sender: detail.id,
       receiver,
@@ -94,22 +74,11 @@ const Chat=(props)=> {
     socket.on("list-message", (payload) =>{
       console.log(payload)
       setListMsg([...listMsg, payload])
-    })
-    // socket.emit("list-user", {sender: detail.id})
-    // socket.on("contact-user", (payload) =>{
-    //     setUpd(payload)
-    //     console.log(updData)
-    //   })
-    
-    
+    }) 
   })
   useEffect(()=> {
-    setListUser(user.getAll)
-    
-    // socket.on("contact-user", (payload) =>{
-    //   setListUser(payload)
-    //   console.log(payload)
-    // })
+    setListUser(user.all)
+ 
 
   }, [user, detail, message, detailById])
   
@@ -122,7 +91,7 @@ const Chat=(props)=> {
     listUser,
     detail
   }
-  console.log(cn)
+  
   return(
     <div>
       <Navbar/>
