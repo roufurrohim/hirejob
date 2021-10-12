@@ -53,7 +53,9 @@ const Hire =(props)=>{
                     <p>Deskripsi</p>
                     <textarea name="" id="" placeholder='Deskripsikan/jelaskan lebih detail' ></textarea>
                   </div>
+                  <Link to="/message">
                   <button type="submit">Hire</button>
+                  </Link>
                 </form>
               </div>
             </section>
