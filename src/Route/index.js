@@ -28,7 +28,7 @@ const Router =()=>{
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
         {/* <Guard path="/hire" exact component={Hire}/> */}
         <Guard path="/message" component={Message}/>
-        <Guard path="/profile" exact component={Profile}/>
+        <Guard path="/my-profile" exact component={Profile}/>
         <Guard path = "/home" component={Home} />
             
         <Route>
