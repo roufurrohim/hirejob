@@ -15,6 +15,9 @@
     height: 90%;
     width: 90%;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 .BgRegister::after {
     content: "";
@@ -118,8 +121,10 @@
 @media screen and (min-width: 1900px){ 
 
     .BgRegister{
-        width: 79%;    
-        height: 80%;
+        width: 92%;
+        background-color: aqua;    
+        height: 92%;
+
     } 
     .formRegister input{
         height: 65px;
