@@ -11,11 +11,14 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
     return(
         <Container fluid={true}>  
         <Row className="register">
-            <Col lg="5" className="BgRegister">
+            <div className="bungkusBg" >
+                <div className="BgRegister" >
                 <img className="logo" src={logo} alt=""/>
                 <div className="ketBgRegis">Temukan developer berbakat & terbaik di berbagai bidang keahlian</div>
-            </Col>
+                </div>
+            </div>
             <Col  className="Main-Register" >  
+            <div className="bungkus">
                 <div className="ket-register">
                     <h1>Halo, Pewpeople</h1>
                     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</div>       
@@ -65,9 +68,9 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     placeholder="Masukan konfirmasi kata sandi"
                     />
                     <button type="submit">Daftar</button>  
-                    <div className="info">Anda sudah punya akun? <Link to="/login">Masuk disini</Link></div>
                 </form>
-                <div className="info2">Anda sudah punya akun? <Link to="/login/0">Masuk disini</Link></div>
+                <div className="info">Anda sudah punya akun? <Link to="/login/0">Masuk disini</Link></div>
+            </div>
 
             </Col>
         </Row>
