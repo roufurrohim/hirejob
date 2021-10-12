@@ -55,7 +55,36 @@ export const ACTION_GET_DETAILS_USER = (id) => {
     }
 }
 
-
+export const ACTION_GET_DETAILS2_USER = (id) => {
+  const token = localStorage.getItem('token')
+  const headers = {
+      token,
+  }
+  console.log(headers)
+  return (dispatch) => {
+      dispatch(userDetails2Pending())
+      axios.get(`${API_URL}user/${id}`, {headers}).then((res) => {
+          dispatch(userDetails2Fullfilled(res.data.result[0]))
+      }).catch((err) => {
+          dispatch(userDetails2Rejected(err))
+      })
+  }
+}
+export const ACTION_GET_MYDETAILS_USER = () => {
+  const token = localStorage.getItem('token')
+  const headers = {
+      token,
+  }
+  console.log(headers)
+  return (dispatch) => {
+      dispatch(userMyDetailsPending())
+      axios.get(`${API_URL}mydetail`, {headers}).then((res) => {
+          dispatch(userMyDetailsFullfilled(res.data.result[0]))
+      }).catch((err) => {
+          dispatch(userMyDetailsRejected(err))
+      })
+  }
+}
 export const LOGIN = (form) =>{
     return new Promise((resolve, reject)=>{
         axios.post(`${API_URL}login`, form)
@@ -70,6 +99,7 @@ export const LOGIN = (form) =>{
         })
     })
 }
+
 export const REGISTER = (data) =>{
     console.log(data, 'ini di action')
     return new Promise((resolve, reject)=>{
@@ -121,4 +151,43 @@ const userDetailsRejected = (payload) => {
         type: "GET_DETAILS_USER_REJECTED",
         payload : "An error occurred!"
     }
+}
+
+const userDetails2Pending = () => {
+  return {
+      type: "GET_DETAILS2_USER_PENDING"
+  }
+}
+
+const userDetails2Fullfilled = (payload) => {
+  return {
+      type: "GET_DETAILS2_USER_FULLFILLED",
+      payload
+  }
+}
+
+const userDetails2Rejected = (payload) => {
+  return {
+      type: "GET_DETAILS2_USER_REJECTED",
+      payload : "An error occurred!"
+  }
+}
+const userMyDetailsPending = () => {
+  return {
+      type: "GET_MYDETAILS_USER_PENDING"
+  }
+}
+
+const userMyDetailsFullfilled = (payload) => {
+  return {
+      type: "GET_MYDETAILS_USER_FULLFILLED",
+      payload
+  }
+}
+
+const userMyDetailsRejected = (payload) => {
+  return {
+      type: "GET_MYDETAILS_USER_REJECTED",
+      payload : "An error occurred!"
+  }
 }
