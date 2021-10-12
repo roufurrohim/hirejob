@@ -5,7 +5,7 @@ const CompanyEdit = ({companydata, setTable, handleSubmit}) =>{
     return(
         <div class="container-fluid col-12 body">
         <div class="row justify-content-center bg-light background">
-        <div class="container-fluid col-12 m-0" style={{backgroundColor:"rgb(94, 80, 161)", height:'250px', zIndex:'0', position:'absolute'}}>
+        <div class="container-fluid col-12 m-0" style={{backgroundColor:"rgb(94, 80, 161)", height:'100px', zIndex:'0', position:'absolute'}}>
                              </div>
            
                  <div class="col-xs-12 col-lg-3 me-lg-5">

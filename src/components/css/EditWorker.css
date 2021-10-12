@@ -1,0 +1,314 @@
+.contentEditProfile {
+    margin-top: -250px !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding-left: 300px;
+    width: 100%;
+}
+
+.workerEdit {
+    width: 90%;
+    height: 440px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.imgRoundedEdit {
+    text-align: center;
+}
+
+.imgWorkerEdit {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;  
+}
+
+.packEditImg {
+    height: 70px !important;
+    text-align: center;
+}
+
+.btnEdit {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 56px;
+    color: #9EA0A5 !important;
+}
+
+.packInfo {
+    margin-top: -20px !important;
+}
+
+.btnSave {
+    width: 86% !important;
+    height: 50px;
+    background: #5E50A1;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.btnSave:hover{
+    color: #fff;
+}
+
+.infoWorker {
+    width: 75%;
+    height: 731px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.brdBottom {
+    margin-left: -30px;
+    position: absolute;
+    width: 41.15% !important;
+}
+
+.titleFormEdit {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 56px;
+    color: #1F2A36;
+}
+
+.labelForm {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 10px;
+    color: #9EA0A5;
+}
+
+.inputDesc {
+    height: 144px;
+}
+
+.infoSkills {
+    width: 75%;
+    min-height: 10%;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.infoSkillsPortfolio {
+    width: 75%;
+    min-height: 10%;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.cardSkillsEdit {
+    width: 25% !important;
+    background: rgba(251, 176, 23, 0.6);
+    color: #fff;
+    border-radius: 4px;
+}
+
+.btnDel {
+    cursor: pointer;
+}
+
+.btnAddSkills {
+    background: #FBB017;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+    border: none !important;
+}
+
+.btnAddWork {
+    height: 50px;
+    border: 1px solid #FBB017;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #fff !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FBB017;
+}
+
+.btnAddWork:hover {
+    background-color: #fff !important;
+}
+
+.btnDelWorkExp {
+    color: #ff0000;
+}
+
+.btnDelWorkExp:hover {
+    color: #ff0000;
+}
+
+.btnDelPortfolio {
+    position: absolute;
+    margin-left: 180px;
+    margin-bottom: 140px;
+}
+
+.btnActive {
+    width: 173px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #E2E5ED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #46505C;
+}
+
+.btnUnactive {
+    width: 173px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #9EA0A5;
+}
+
+.pictEditPortfolio {
+    width: 219px;
+    height: 148px;
+    margin: 20px 10px;
+}
+
+.wrapper {
+    padding:20px;
+}
+
+.drop_zone {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 348px;
+    width: 100%;
+    background: white;
+    cursor: pointer;
+    border: 1px dashed #9EA0A5;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.drop_zone>p,
+.drop_zone>small {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #9EA0A5 !important;    
+}
+
+.imageDrag{
+   width: 200px;
+   height: 200px;
+   border-radius: 4px;
+   display: inline-block;
+}
+
+.imgPreview {
+    width: 219px;
+    height: 148px;
+    /* margin: 20px 10px; */
+}
+
+.footerHome {
+    margin-top: 180px !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .workerEdit {
+        width: 100% !important;
+    }
+
+    .contentEditProfile {
+        padding-left: 200px;
+    }
+
+    .brdBottom {
+        width: 41.8% !important;
+    }
+
+    .pictEditPortfolio {
+        width: 150px;
+        height: 120px;
+        margin: 20px 5px;
+    }
+    
+    .btnDelPortfolio {
+        position: absolute;
+        margin-left: 120px;
+        margin-bottom: 120px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .workerEdit {
+        width: 100% !important;
+    }
+
+    .contentEditProfile {
+        padding-left: 20px;
+    }
+
+    .btnSave {
+        width: 90% !important;
+    }
+
+    .brdBottom {
+        width: 88.5% !important;
+    }
+
+    .infoWorker,
+    .infoSkills,
+    .infoSkillsPortfolio {
+        width: 100%;
+    }
+
+    .cardSkillsEdit {
+        width: 40% !important;
+    }
+
+    .wrapper {
+        margin-top: 20px;
+        padding: 0px;
+    }
+
+    .drop_zone>p,
+    .drop_zone>small {
+    text-align: center;
+}
+}

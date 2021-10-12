@@ -5,14 +5,16 @@ const Company = ({companydata}) => {
     return(
         <div class="container-fluid col-12 body">
         <div class="row justify-content-center bg-light background">
+        <div class="container-fluid col-12 m-0" style={{backgroundColor:"rgb(94, 80, 161)", height:'150px', zIndex:'0', position:'absolute'}}>
+                             </div>
             <div class="col-md-6 col-lg-10 bg-white mt-5 mb-5 card">
-            {/* <div class="container-fluid col-12 m-0" style={{backgroundColor:"rgb(94, 80, 161)", height:'80px', zIndex:'-1', position:'absolute'}}>
-                             </div> */}
+            
                 <div class="login-wrap">
+                
                     {companydata.map((e, i) => (
                         
                         <div class="text-center">
-                        <img src={e.image} alt="" class="rounded-circle" style={{height:"120px", width:"120px", objectFit:'cover' }}></img>
+                        <img src={e.image} alt="" class="rounded-circle mt-3" style={{height:"120px", width:"120px", objectFit:'cover' }}></img>
                         <div>
                             <h5 class="text-center mb-2 head mt-3">{e.name}</h5>
                         </div>

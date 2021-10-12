@@ -21,12 +21,13 @@ const Navbar=()=>{
               alt=""
               onClick={()=> history.push("/")}
               exact
+
             />
             <NavLink 
               to= "/home"
               activeClassName="textPurple"
               exact
-              className={`ms-5 fw-bold txtDark mt-3 text-decoration-none  ${!token ? "d-none" : "homeMenu"} `}
+              className={`ms-5 fw-bold txtDark  text-decoration-none  ${!token ? "d-none" : "homeMenu"} `}
             >
               Home
             </NavLink>
@@ -34,7 +35,7 @@ const Navbar=()=>{
           <Col md="6" xs="12">
             {token ? (
               <div>
-                <div className="navUpper mt-md-2">
+                <div className="navUpper">
                   <NavLink exact to=""  activeClassName="" className="me-4 iconNavbar txtDark text-decoration-none">
                     <BsBell />
                   </NavLink>
@@ -89,7 +90,7 @@ const Navbar=()=>{
                 >
                   Login Pekerja
                 </button>
-                <button className="btn btnRekruter fw-bold" exact onClick={()=> history.push("login/2")}>
+                <button className="btn btnRekruter fw-bold" exact onClick={()=> history.push("login/0")}>
                   Login Rekruter
                 </button>
               </div>
