@@ -158,7 +158,7 @@ const ViewProfile = () => {
                       </div>
                     ) : (
                       <div className="row p-4">
-                        {data.work_experiences.map((e, i) => (
+                        {dataStore.works.map((e, i) => (
                           <div key={i} className="col-lg-9 my-3 mx-5">
                             <div className="row">
                               <div className="col-lg-12">
