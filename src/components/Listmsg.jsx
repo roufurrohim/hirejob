@@ -33,7 +33,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     {e.sender === detail.id ? 
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
@@ -41,7 +41,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-start', alignItems:'flex-end', height:'unset'}}>
                         <img style={{marginRight:'20px'}} src={`${API_URL}uploads/${detailById.image}`} alt="" srcset="" />
-                        <div className="text" style={{ width:"auto", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
                           <p>{e.msg}</p>
                         </div>
                       </div>)}
@@ -74,7 +74,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     {e.sender === detail.id ?
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
@@ -82,7 +82,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-start', alignItems:'flex-end', height:'unset'}}>
                         <img style={{marginRight:'20px'}} src={`${API_URL}uploads/${detailById.image}`} alt="" srcset="" />
-                        <div className="text" style={{ width:"auto", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
                           <p>{e.msg}</p>
                         </div>
                       </div>)}
