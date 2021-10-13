@@ -14,9 +14,10 @@ const Registers = () => {
     })
 
     const [Data, setData] = useState({
-        nama:"",
+        name:"",
         email:"",
         no_telp:"",
+        status: id
     })
     
     const insertData = (e) => {
@@ -37,6 +38,7 @@ const Registers = () => {
         e.preventDefault();
         if(pass.newPassword === pass.komfirmasiPassword){  
             const Datauser = {...Data, password: pass.newPassword }
+            console.log(Datauser)
             REGISTER(Datauser).then((response)=>{
                 if(response.data === null){
                     alert("email sudah ada")

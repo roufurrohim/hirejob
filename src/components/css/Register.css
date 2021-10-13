@@ -122,7 +122,6 @@
 
     .BgRegister{
         width: 92%;
-        background-color: aqua;    
         height: 92%;
 
     } 
@@ -160,7 +159,7 @@
        display: none;
     }
     .register{
-        height: 115vh;
+        height: 90vh;
     }
     .formRegister{
         justify-content: center;
