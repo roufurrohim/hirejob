@@ -10,6 +10,7 @@ import { API_URL } from "../helpers/env";
 const ViewProfile = () => {
   const history = useHistory();
   const { id } = useParams();
+  const status = localStorage.getItem("status")
 
   const dispatch = useDispatch();
   const dataStore = useSelector((state) => state.user);
@@ -23,8 +24,8 @@ const ViewProfile = () => {
 
   const [statusBtn, setStatusBtn] = useState(false);
 
-  const hire = (id) => {
-    history.push("/hire");
+  const hire = () => {
+    history.push(`/hire/${id}`);
   };
 
   const statusActive = () => {
@@ -76,7 +77,7 @@ const ViewProfile = () => {
                     <p className="bioWorker">{data.description}</p>
                   </div>
 
-                  <div className="row mt-3">
+                  <div className={status !== "0" ? "d-none" : "row mt-3"}>
                     <div className="col-12 handleBtn">
                       <button
                         type="button"

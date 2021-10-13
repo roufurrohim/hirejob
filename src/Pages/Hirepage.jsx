@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import React, { useState, useEffect } from "react"
 import Profile from '../components/profileCard.jsx'
-import {Link, useHistory, useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import { ACTION_GET_DETAILS2_USER } from "../redux/action/users";
 import socket from '../Config/socket'
 import { useDispatch, useSelector } from "react-redux";
