@@ -92,10 +92,11 @@ export const ACTION_GET_MYDETAILS_USER = () => {
   const headers = {
       token,
   }
-  console.log(headers)
+//   console.log(headers)
   return (dispatch) => {
       dispatch(userMyDetailsPending())
       axios.get(`${API_URL}mydetail`, {headers}).then((res) => {
+          console.log(res.data.result[0])
           dispatch(userMyDetailsFullfilled(res.data.result[0]))
       }).catch((err) => {
           dispatch(userMyDetailsRejected(err))
@@ -159,25 +160,25 @@ export const FORGET_PASS = (data) =>{
   })
 }
 
-const userDetailsPending = () => {
-    return {
-        type: "GET_DETAILS_USER_PENDING"
-    }
-}
+// const userDetailsPending = () => {
+//     return {
+//         type: "GET_DETAILS_USER_PENDING"
+//     }
+// }
 
-const userDetailsFullfilled = (payload) => {
-    return {
-        type: "GET_DETAILS_USER_FULLFILLED",
-        payload
-    }
-}
+// const userDetailsFullfilled = (payload) => {
+//     return {
+//         type: "GET_DETAILS_USER_FULLFILLED",
+//         payload
+//     }
+// }
 
-const userDetailsRejected = (payload) => {
-    return {
-        type: "GET_DETAILS_USER_REJECTED",
-        payload : "An error occurred!"
-    }
-}
+// const userDetailsRejected = (payload) => {
+//     return {
+//         type: "GET_DETAILS_USER_REJECTED",
+//         payload : "An error occurred!"
+//     }
+// }
 
 const userDetails2Pending = () => {
   return {
