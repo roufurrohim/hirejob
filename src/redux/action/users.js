@@ -11,7 +11,7 @@ export const ACTION_GET_USERS = () => {
         dispatch({
             type: "GET_USERS_PENDING"
         })
-        axios.get(`${API_URL}users`, {headers} ).then((res) => {
+        axios.get(`${API_URL}users?limit=${!data?5:data}`, {headers} ).then((res) => {
             dispatch({
                 type: "GET_USERS_FULLFILLED",
                 payload: res.data.result

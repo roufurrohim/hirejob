@@ -121,3 +121,12 @@
   width: 11px;
   height: 11px;
 }
+@media screen and (max-width:576px) {
+  .chatrow .chatbox .chatlist .text{
+    width: 60% !important;
+    padding: 5% 5%;
+  }
+  .chatrow .chatbox .chatlist img{
+    display: none;
+  }
+}
