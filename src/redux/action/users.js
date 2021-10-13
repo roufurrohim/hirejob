@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../../helpers/env";
 
-export const ACTION_GET_USERS = (data) => {
+export const ACTION_GET_USERS = (dataLimit) => {
     const token = localStorage.getItem('token')
     const headers = {
         token: token
@@ -11,7 +11,7 @@ export const ACTION_GET_USERS = (data) => {
         dispatch({
             type: "GET_USERS_PENDING"
         })
-        axios.get(`${API_URL}users?limit=${!data?5:data}`, {headers} ).then((res) => {
+        axios.get(`${API_URL}users?limit=${dataLimit===0?5:dataLimit}`, {headers} ).then((res) => {
             dispatch({
                 type: "GET_USERS_FULLFILLED",
                 payload: res.data.result

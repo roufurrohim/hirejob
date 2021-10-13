@@ -1,7 +1,9 @@
+/* eslint-disable array-callback-return */
 import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Listmsg.css"
 import { FaArrowLeft } from 'react-icons/fa';
+import { FiSend } from 'react-icons/fi'
 
 const List = ({dataChat, sendMessage, setMsg, setCn}) => {
   const {receiver, detailById, detail, listMsgHistory, listMsg, msg} = dataChat
@@ -65,7 +67,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
               }}>Please select a chat to start messaging</p>
               </div>
             )}
-            {receiver?
+            {
             listMsg.map((e, i) => {
               if(e.receiver === receiver || e.sender === receiver) {
                 return (
@@ -88,20 +90,21 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                   </div>
                 )
               }
-            }):null}
+            })}
           </div>
           {receiver ? (
             <div className='sendbox'>
               <div className="send">
                 <form onSubmit={sendMessage}>
                   <input type="text"
+                  className="inputMsg"
                   value={msg}
                   placeholder="Type your message..."
                   onChange={(e) =>setMsg(e.target.value)}/>
                 </form>
                 <div className='rowbox'>
-                <div className='imgbox' style={{cursor:'pointer',backgroundColor:'#5E50A1', width:'40px', height:'40px', borderRadius:'40px'}} onClick={sendMessage}>
-                <img src={`${API_URL}helpers/send.png`} style={{width:'13px', height:'13px'}}  alt="" srcset="" />
+                <div className='imgbox' style={{cursor:'pointer',backgroundColor:'#5E50A1', width:'45px', height:'45px', borderRadius:'50%'}} onClick={sendMessage}>
+                  <FiSend size={28} style={{color: "#fff"}} />
                 </div>
                 </div>
               </div>

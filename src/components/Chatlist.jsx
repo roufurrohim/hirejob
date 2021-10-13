@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Chatlist.css"

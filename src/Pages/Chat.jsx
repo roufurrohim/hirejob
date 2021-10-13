@@ -45,10 +45,11 @@ const Chat=(props)=> {
       sec: 'col-lg-8 pt-5 none'
     })
     socket.emit("get-message", { receiver: id, sender: detail.id})
-    setListMsg([]);
+    
     socket.on("history-messages", (message) =>{
       setListMsgHistory(message);
     })
+    setListMsg([]);
   }
   const sendMessage = (e) => {
     e.preventDefault();

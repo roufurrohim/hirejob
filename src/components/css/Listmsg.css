@@ -121,6 +121,9 @@
   width: 11px;
   height: 11px;
 }
+.inputMsg:focus {
+  outline: none !important;
+}
 @media screen and (max-width:576px) {
   .chatrow .chatbox .chatlist .text{
     width: 60% !important;
