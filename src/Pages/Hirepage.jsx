@@ -1,17 +1,28 @@
-// import Footer from "../components/Footer"
-// import Navbar from "../components/Navbar"
 import "bootstrap/dist/css/bootstrap.min.css"
 import '../Pages/css/Hire.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Profile from '../components/profileCard.jsx'
-// import { LOGIN } from "../redux/actions/users"
-// import {Link, useHistory} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
+import { ACTION_GET_DETAILS2_USER } from "../redux/action/users";
+
+import { useDispatch, useSelector } from "react-redux";
 
 
 const Hire =(props)=>{
-  
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const data = user.details2;
+  const skill = user.skills
+
+  useEffect(() => {
+    dispatch(ACTION_GET_DETAILS2_USER(id));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return(
     <div>
       <Navbar />
@@ -19,12 +30,12 @@ const Hire =(props)=>{
         <div className="container-fluid">
           <div className="row">
             <aside className="col-lg-4 asdhire">
-              <Profile/>
+              <Profile data={data} skill={skill}/>
             </aside>
             <section className="col-lg-8 sechire">
               <div className="row">
                 <div className='textbox'>
-                  <h1>Hubungi Lous Tomlinson</h1>
+                  <h1>{`Hubungi ${data.name}`}</h1>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                 </div>
                 <form action="" className='form'>
