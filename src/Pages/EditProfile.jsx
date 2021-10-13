@@ -309,9 +309,9 @@ const EditProfile = () => {
       <div className="bgWorker"></div>
       <div className={id === '0' ? "d-block" : "d-none"}>
         <CompanyEdit
-          companydata={user}
-          setTable={changeUserCompany}
-          handleSubmit={handleSubmit}
+          // companydata={user}
+          // setTable={changeUserCompany}
+          // handleSubmit={handleSubmit}
         />
       </div>
       <div className={id === '1' ? "d-block" : "d-none"}>
