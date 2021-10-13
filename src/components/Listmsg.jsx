@@ -1,7 +1,6 @@
 import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Listmsg.css"
-import { useHistory } from "react-router-dom"
 import { FaArrowLeft } from 'react-icons/fa';
 
 const List = ({dataChat, sendMessage, setMsg, setCn}) => {
