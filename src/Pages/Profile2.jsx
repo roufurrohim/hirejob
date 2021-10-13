@@ -62,9 +62,9 @@ const Profile = () => {
         </div>
 
         <div className={ statusUser === '1' ? "d-block" : "d-none" }>
-          {dataStore.loadDetails === true ? (
-            <div> loading </div>
-          ):(
+          {/* {dataStore.loadDetails === true ? ( */}
+            {/* <div> loading </div> */}
+          {/* ):( */}
             <Worker
             workerData={dataStore.details}
             toHire={hire}
@@ -74,7 +74,7 @@ const Profile = () => {
             handleEdit={editProfile}
             handleLogout={logout}
           />
-          )}
+          {/* // )} */}
          
         </div>    
       </div>

@@ -5,6 +5,7 @@ import NavbarHome from "../components/Navbar";
 import FooterHome from "../components/Footer";
 import { ACTION_GET_DETAILS2_USER } from "../redux/action/users";
 import { IoLocationOutline } from "react-icons/io5";
+import { API_URL } from "../helpers/env";
 
 const ViewProfile = () => {
   const history = useHistory();
@@ -54,7 +55,7 @@ const ViewProfile = () => {
                 <div className=" userWorker pt-5">
                   <div className="imgRounded">
                     <img
-                      src={data.image}
+                      src={`${API_URL}uploads/${data.image}`}
                       alt="imageWorker"
                       className="imgWorker"
                     />

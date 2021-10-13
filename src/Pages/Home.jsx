@@ -138,7 +138,7 @@ const Home = () => {
                 >
                   <div className="col-lg-2 col-5 me-lg-0 me-5 colPict">
                     <img
-                      src={`${API_URL}/image/uploads/${e.image}`}
+                      src={`${API_URL}uploads/${e.image}`}
                       alt="user"
                       className="pictUser"
                     />
