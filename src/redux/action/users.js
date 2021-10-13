@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../../helpers/env";
 
-export const ACTION_GET_USERS = () => {
+export const ACTION_GET_USERS = (data) => {
     const token = localStorage.getItem('token')
     const headers = {
         token: token
