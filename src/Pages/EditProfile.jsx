@@ -1,13 +1,16 @@
-import React, { useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import NavbarHome from "../components/Navbar";
 import FooterHome from "../components/Footer";
 import EditWorker from "../components/editWorker";
 import CompanyEdit from "../components/editCompanyProfile";
+import { ACTION_GET_DETAILS2_USER, UPDATE_USER } from "../redux/action/users";
 
 const EditProfile = () => {
   const { id } = useParams();
-
+  const dispatch = useDispatch();
+  const history = useHistory()
   const [user, setUser] = useState({
     id: 1,
     name: "Gilang Rangga",
@@ -32,6 +35,13 @@ const EditProfile = () => {
     });
   };
 
+  const dataStore = useSelector((state) => state.user);
+  const dataUser = dataStore.details[0]
+  
+  useEffect(() => {
+    dispatch(ACTION_GET_DETAILS2_USER(id))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   const [worker, setWorker] = useState({
     id: 1,
     name: "Louis Tomlinson",
@@ -103,6 +113,25 @@ const EditProfile = () => {
     ],
   });
 
+
+  const [dataPerson, setDataPerson] = useState(
+    {
+      nama: dataUser.name,
+      image: dataUser.image,
+      imagePrev: dataUser.image,
+      city: dataUser.city,
+      special_skill: dataUser.special_skill,
+      workplace: dataUser.workplace,
+      description: dataUser.description,
+      email: dataUser.email,
+      password: dataUser.password,
+      ig: dataUser.ig,
+      github: dataUser.github,
+      gitlab: dataUser.gitlab,
+    }
+  )
+  
+
   const [addSkill, setAddSkill] = useState("");
 
   const [addWork, setAddWork] = useState({
@@ -119,6 +148,15 @@ const EditProfile = () => {
     type: "",
     repository: "",
   });
+
+  const changePerson = (e) => {
+    const {name, value} = e.target
+    console.log(name, value)
+    setDataPerson({
+      ...dataPerson,
+      [name]: value,
+    })
+  }
 
   // handle drag & drop
   const fileInput = useRef(null);
@@ -243,9 +281,26 @@ const EditProfile = () => {
   // handdle change submit data worker
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    console.log(worker);
+    // console.log(dataPerson)
   };
+
+  const handleSubmitWorker = (e) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append("name", dataPerson.nama);
+    formData.append("email", dataPerson.email);
+    formData.append("password", dataPerson.password);
+    formData.append("image", dataPerson.image);
+    formData.append("special_skill", dataPerson.special_skill);
+    formData.append("description", dataPerson.description);
+    formData.append("workplace", dataPerson.workplace);
+    formData.append("city", dataPerson.city);
+    UPDATE_USER(id, formData).then((res) => console.log(res)).catch((err) => alert(err.response.message))
+  }
+  
+  const cancel = () => {
+    history.push(`/my-profile`)
+  }
   return (
     <div>
       <div className="navbarHome border-bottom">
@@ -260,8 +315,10 @@ const EditProfile = () => {
         />
       </div>
       <div className={id === '1' ? "d-block" : "d-none"}>
-        <EditWorker
-          worker={worker}
+        {
+          dataStore.loadDetails2 === true ? <h1>Loading...</h1> : 
+          <EditWorker
+          worker={dataStore.details}
           handleChange={changeWorker}
           handleSkill={changeSkill}
           delSkills={delSkills}
@@ -280,7 +337,13 @@ const EditProfile = () => {
           handleFile={handleFile}
           handleOndragOver={handleOndragOver}
           handleOndrop={handleOndrop}
+          dataPerson={dataPerson}
+          handlePerson={changePerson}
+          toCancel={cancel}
+          handleSubmitWorker={handleSubmitWorker}
         />
+        }
+        
       </div>
       <div className="h-25 footerHome">
         <FooterHome />

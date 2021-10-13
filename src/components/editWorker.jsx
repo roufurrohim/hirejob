@@ -6,6 +6,7 @@ import { MdModeEdit } from "react-icons/md";
 import { RiDeleteBinLine, RiDeleteBinFill } from "react-icons/ri";
 import { FaCloudUploadAlt } from "react-icons/fa"
 import "./css/EditWorker.css";
+import { useSelector } from "react-redux";
 
 const EditWorker = ({
   worker,
@@ -26,10 +27,12 @@ const EditWorker = ({
   previewUrl,
   handleFile,
   handleOndragOver,
-  handleOndrop
+  handleOndrop,
+  dataPerson,
+  handlePerson,
+  toCancel,
+  handleSubmitWorker
 }) => {
-  
-
   return (
     <div>
       <div className="row contentEditProfile">
@@ -37,7 +40,7 @@ const EditWorker = ({
           <div className="workerEdit pt-5">
             <div className="imgRoundedEdit">
               <img
-                src={worker.pict}
+                src={dataPerson.imagePrev}
                 alt="imageWorker"
                 className="imgWorkerEdit"
               />
@@ -49,25 +52,25 @@ const EditWorker = ({
               </button>
             </div>
             <div className="text-start mt-lg-3 ms-4 packInfo">
-              <h3 className="nameWorker my-2">{worker.name}</h3>
-              <p className="spWorker my-2">{worker.special_skill}</p>
+              <h3 className="nameWorker my-2">{dataPerson.nama}</h3>
+              <p className="spWorker my-2">{dataPerson.special_skill}</p>
 
               <div className="my-2 cityProfile">
                 <IoLocationOutline size={22} className="me-2" />
-                <small>{worker.city}</small>
+                <small>{dataPerson.city}</small>
               </div>
 
               <div>
-                <small className="workplace">{worker.workplace}</small>
+                <small className="workplace">{dataPerson.workplace}</small>
               </div>
             </div>
           </div>
           <div className="row my-4">
-            <button type="submit" className="btn col-lg-12 ms-2 btnSave">
+            <button type="submit" onClick={handleSubmitWorker} className="btn col-lg-12 ms-2 btnSave">
               Save
             </button>
 
-            <button type="submit" className="btn col-lg-12 ms-2 mt-3 btnSave">
+            <button type="button" onClick={toCancel} className="btn col-lg-12 ms-2 mt-3 btnSave">
               Cancel
             </button>
           </div>
@@ -80,13 +83,17 @@ const EditWorker = ({
             </div>
             <div className="border-bottom brdBottom"></div>
             <div className="formEditData">
+              {
+
+              }
               <Form>
                 <FormGroup className="my-4">
                   <Label className="labelForm">Nama Lengkap</Label>
                   <Input
                     type="text"
-                    name="name"
-                    value={worker.name}
+                    name="nama"
+                    value={dataPerson.nama}
+                    onChange={handlePerson}
                     placeholder="Masukan nama lengkap"
                   />
                 </FormGroup>
@@ -96,7 +103,8 @@ const EditWorker = ({
                   <Input
                     type="text"
                     name="special_skill"
-                    value={worker.special_skill}
+                    value={dataPerson.special_skill}
+                    onChange={handlePerson}
                     placeholder="Masukan job desk"
                   />
                 </FormGroup>
@@ -106,7 +114,8 @@ const EditWorker = ({
                   <Input
                     type="text"
                     name="city"
-                    value={worker.city}
+                    value={dataPerson.city}
+                    onChange={handlePerson}
                     placeholder="Masukan domisili"
                   />
                 </FormGroup>
@@ -116,7 +125,8 @@ const EditWorker = ({
                   <Input
                     type="text"
                     name="workplace"
-                    value={worker.workplace}
+                    value={dataPerson.workplace}
+                    onChange={handlePerson}
                     placeholder="Masukan tempat kerja"
                   />
                 </FormGroup>
@@ -126,7 +136,8 @@ const EditWorker = ({
                   <Input
                     type="textarea"
                     name="description"
-                    value={worker.description}
+                    value={dataPerson.description}
+                    onChange={handlePerson}
                     placeholder="Tuliskan deskripsi singkat"
                     className="inputDesc"
                   />
@@ -137,24 +148,28 @@ const EditWorker = ({
 
           <div className="infoSkills my-5">
             <div>
-              <h3 className="titleFormEdit">Skill</h3>
+              <h3 className="titleFormEdit">Skills</h3>
             </div>
             <div className="border-bottom brdBottom"></div>
             <div className="row d-flex flex-lg-row mt-4">
-              {worker.skills.map((e, i) => (
-                <div
-                  key={i}
-                  className="col-lg-2 cardSkillsEdit text-center d-flex justify-content-center align-items-center mx-2 my-3"
-                >
-                  <div>{e.name}</div>
-
-                  <div className="ms-2 btnDel" onClick={() => delSkills(i)}>
-                    <span className="text-end">
-                      <TiDeleteOutline size={26} className="text-end" />
-                    </span>
+              {
+                worker[0].skills.length === 0 ? <p>Harap Tambah Skills</p> :
+                worker[0].skills.map((e, i) => (
+                  <div
+                    key={i}
+                    className="col-lg-2 cardSkillsEdit text-center d-flex justify-content-center align-items-center mx-2 my-3"
+                  >
+                    <div>{e.name_skill}</div>
+  
+                    <div className="ms-2 btnDel" onClick={() => delSkills(i)}>
+                      <span className="text-end">
+                        <TiDeleteOutline size={26} className="text-end" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              }
+              
               <div className="mt-5">
                 <Form onSubmit={handleAddSkills} className="row">
                   <FormGroup className="col-lg-10 col-8">
@@ -180,7 +195,7 @@ const EditWorker = ({
               <h3 className="titleFormEdit">Pengalaman Kerja</h3>
             </div>
             <div className="border-bottom brdBottom"></div>
-            {worker.workExperience.map((e, i) => (
+            {/* {worker.workExperience.map((e, i) => (
               <div className="formEditData mt-5">
                 <div className="row justify-content-between align-items-center">
                   <div className="col-lg-5 titleWorkExp">
@@ -257,7 +272,7 @@ const EditWorker = ({
                 </Form>
                 <div className="border-bottom brdBottom"></div>
               </div>
-            ))}
+            ))} */}
             <div className="mt-5">
               <Form onSubmit={handleAddWorks}>
                 <FormGroup className="my-4">
@@ -331,7 +346,7 @@ const EditWorker = ({
             <div className="border-bottom brdBottom"></div>
 
             <div className="row mb-4">
-              {worker.portfolio.map((e, i) => (
+              {/* {worker.portfolio.map((e, i) => (
                 <div
                   key={i}
                   className="col-lg-4 d-flex flex-column justify-content-center align-items-center"
@@ -349,7 +364,7 @@ const EditWorker = ({
                   />
                   <h5>{e.name}</h5>
                 </div>
-              ))}
+              ))} */}
             </div>
 
             <div className="border-bottom brdBottom"></div>

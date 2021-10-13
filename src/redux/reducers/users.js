@@ -8,6 +8,9 @@ const initialState = {
     errorDetails: false,
     errorDetailsMessage: "Data Not Found",
     details2: {},
+    skills:[],
+    works: [],
+    portfolios:[],
     loadDetails2: false,
     errorDetails2: false,
     errorDetailsMessage2: "Data Not Found",
@@ -71,6 +74,9 @@ const usersReducer = (state=initialState, action) => {
               ...state,
               loadDetails2: false,
               details2: action.payload,
+              skills: action.payload.skills,
+              works: action.payload.work_experiences,
+              portfolios: action.payload.portfolios,
               errorDetailsMessage2: "Get User Success"
           }
 

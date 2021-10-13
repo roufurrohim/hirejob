@@ -41,7 +41,10 @@ const Profile = () => {
     console.log(statusBtn);
   };
 
-
+  const logout = () => {
+    localStorage.clear()
+    history.push('/')
+  }
 
   return (
     <div>
@@ -69,6 +72,7 @@ const Profile = () => {
             statusBtn={statusBtn}
             status={statusUser}
             handleEdit={editProfile}
+            handleLogout={logout}
           />
           )}
          

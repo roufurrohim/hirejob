@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./css/Home.css";
 import NavbarHome from "../components/Navbar";
@@ -9,11 +10,12 @@ import Pagination from "../components/Pagination";
 import { HiOutlineSearch } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
 import { Button, Form, Input } from "reactstrap";
-import { ACTION_GET_USERS } from "../redux/action/users";
+import { ACTION_GET_USERS, ACTION_GET_USERS_QUERY } from "../redux/action/users";
 import { API_URL } from "../helpers/env";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [postsPerPage, setPostPerPage] = useState(2);
   const [query, setQuery] = useState({
@@ -22,20 +24,27 @@ const Home = () => {
     page: "",
   });
 
-  const dataStore = useSelector((state) => state.users);
-  const dataUsers = dataStore.all.data;
-  console.log(dataUsers);
+  const dataStore = useSelector((state) => state.user);
+  
+  const useQuery = new URLSearchParams(useLocation().search)
 
   useEffect(() => {
-    dispatch(ACTION_GET_USERS(query));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    
+    const sentQuery = {
+      search : useQuery.get("search"),
+      sortby: useQuery.get("sortby")
+    }
+    if (sentQuery.search === null) {
+      dispatch(ACTION_GET_USERS_QUERY(query));  
+    } else {
+      dispatch(ACTION_GET_USERS_QUERY(sentQuery));
+    }
+    
   }, []);
 
-  useEffect(() => {
-    setPostPerPage(dataStore.all.limit);
-  }, [dataStore.all.limit]);
-
-  console.log(postsPerPage);
+  // useEffect(() => {
+  //   setPostPerPage(dataStore.all.limit);
+  // }, [dataStore.all.limit]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -47,16 +56,16 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(ACTION_GET_USERS(query));
-    setQuery({
-      search: "",
-      sortby: "",
-    });
+    history.push(`/home?search=${query.search}&sortby=${query.sortby}`)
+    dispatch(ACTION_GET_USERS_QUERY(query));
+    // setQuery({
+    //   search: "",
+    //   sortby: "",
+    // });
   };
 
-  const history = useHistory();
   const toProfile = (id) => {
-    history.push(`/my-profile/${id}`);
+    history.push(`/profile/${id}`);
   };
 
   return (
@@ -66,10 +75,7 @@ const Home = () => {
       </div>
 
       <div className="container-fluid">
-        <div className=" m-5 d-flex justify-content-center align-items-center">
-          <div className="h-100">
-            <h1>Loading...</h1>
-          </div>
+        <div className="d-flex justify-content-center align-items-center">
         </div>
         <div className="row">
           <div className="col-lg-12 d-flex align-items-center  topHome">
@@ -120,10 +126,12 @@ const Home = () => {
           </div>
 
           <div className="col-lg-12 mt-lg-5 d-flex flex-column align-items-center">
-            {dataStore.loadAll !== false ? (
+            {
+            dataStore.loadAll !== false  ? (
               <h1>Loading...</h1>
             ) : (
-              dataUsers.map((e, i) => (
+              // <h1>harusnya muncul</h1>
+              dataStore.all.map((e, i) => (
                 <div
                   key={i}
                   className="row p-lg-4 pt-lg-0 pt-3 my-4 mx-5 cardUsers"
@@ -171,23 +179,22 @@ const Home = () => {
                   </div>
                 </div>
               ))
-            )
+            ) 
             
           }
           </div>
 
           <div className="col-lg-12 mt-5">
             <div className="d-flex justify-content-center">
-              <Pagination
+              {/* <Pagination
                 postsPerPage={postsPerPage}
                 totalPosts={
-                  dataStore.loadAll === false ? 5 : dataStore.all.result.length
+                  dataStore.all.length
                 }
-              />
+              /> */}
             </div>
           </div>
         </div>
-        )
       </div>
 
       <div className="h-25 footerHome">
