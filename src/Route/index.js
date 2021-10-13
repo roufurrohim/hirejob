@@ -4,6 +4,7 @@ import Login from '../Pages/Login'
 import Reset from '../Pages/Resetpw'
 import Hire from '../Pages/Hirepage'
 import Profile from '../Pages/Profile2'
+import ViewProfile from '../Pages/Profile'
 import EditProfile from '../Pages/EditProfile'
 import Home from '../Pages/Home'
 import Konfirmasipass from '../Pages/Konfirmasipass'
@@ -24,11 +25,12 @@ const Router =()=>{
         <Route path="/login" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/login/:id" exact render={(props)=>(<Login  {...props}/>)}/>
         <Route path="/forget-password" exact render={(props)=>(<Reset  {...props}/>)}/>
-        <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/>
+        {/* <Guard path="/hire" exact render={(props)=>(<Hire  {...props}/>)}/> */}
         {/* <Route path="/message" exact render={(props)=>(<Chat  {...props}/>)}/> */}
-        {/* <Guard path="/hire" exact component={Hire}/> */}
+        <Guard path="/hire" exact component={Hire}/>
         <Guard path="/message" component={Message}/>
         <Guard path="/my-profile" exact component={Profile}/>
+        <Guard path="/profile/:id" exact component={ViewProfile}/>
         <Guard path = "/home" component={Home} />
             
         <Route>

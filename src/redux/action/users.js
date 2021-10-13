@@ -25,30 +25,30 @@ export const ACTION_GET_USERS = () => {
     }
 }
 
-// export const ACTION_GET_USERS_QUERY = (query) => {
-//     const { search, sortby } = query
-//     const token = localStorage.getItem('token')
+export const ACTION_GET_USERS_QUERY = (query) => {
+    const { search, sortby } = query
+    const token = localStorage.getItem('token')
     
-//     const headers = {
-//         token: token
-//     }
-//     return (dispatch) => {
-//         dispatch({
-//             type: "GET_USERS_PENDING"
-//         })
-//         axios.get(`${API_URL}users?search=${search}&sortby=${sortby}`, {headers} ).then((res) => {
-//             dispatch({
-//                 type: "GET_USERS_FULLFILLED",
-//                 payload: res.data.result
-//             })
-//         }).catch((err) => {
-//             dispatch({
-//                 type: "GET_USER_REJECTED",
-//                 payload : "An error occurred!"
-//             })
-//         })
-//     }
-// }
+    const headers = {
+        token: token
+    }
+    return (dispatch) => {
+        dispatch({
+            type: "GET_USERS_PENDING"
+        })
+        axios.get(`${API_URL}users?search=${search}&sortby=${sortby}`, {headers} ).then((res) => {
+            dispatch({
+                type: "GET_USERS_FULLFILLED",
+                payload: res.data.result
+            })
+        }).catch((err) => {
+            dispatch({
+                type: "GET_USER_REJECTED",
+                payload : "An error occurred!"
+            })
+        })
+    }
+}
 
 export const ACTION_GET_DETAILS_USER = (id, token) => {
     const headers = {
@@ -78,7 +78,6 @@ export const ACTION_GET_DETAILS2_USER = (id) => {
   const headers = {
       token,
   }
-  console.log(headers)
   return (dispatch) => {
       dispatch(userDetails2Pending())
       axios.get(`${API_URL}user/${id}`, {headers}).then((res) => {

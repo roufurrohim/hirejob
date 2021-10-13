@@ -3,7 +3,7 @@ import "./css/Worker.css";
 import { API_URL } from "../helpers/env"
 import { IoLocationOutline } from "react-icons/io5";
 
-const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit}) => {
+const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdit, handleLogout}) => {
 
   console.log(workerData,"in data worker di component")
 
@@ -44,6 +44,13 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                       className="btn btnHire"
                     >
                       Edit profile
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="btn btnHire"
+                    >
+                      Log Out
                     </button>
                   </div>
 
