@@ -43,3 +43,27 @@
 
 ## Terdapat profile untuk perekrut 
 ![perekrut](https://github.com/aliefabdussalam/week3/blob/main/profile%20perekrut%20web.PNG?raw=true)
+
+# tampilan Mobile
+
+## landing page
+![landingpagemob]()
+
+## register and login
+![loginreg](https://github.com/aliefabdussalam/week3/blob/main/login%20mobile.PNG?raw=true)
+
+## ganti password
+![gantipass](https://github.com/aliefabdussalam/week3/blob/main/reset%20password%20responsive.PNG?raw=true)
+![gantipass](https://github.com/aliefabdussalam/week3/blob/main/konfirmasi%20pass%20mobile.PNG?raw=true)
+
+## profile pekerja
+![profilekerja](https://github.com/aliefabdussalam/week3/blob/main/profile%20pekerja%20mobile.PNG?raw=true)
+
+## profile perusahaan
+![profileperusahaan](https://github.com/aliefabdussalam/week3/blob/main/profile%20perekrut%20mobile.PNG?raw=true)
+
+## edit profile comp
+![editcompany](https://github.com/aliefabdussalam/week3/blob/main/edit%20profile%20perekrut%20mobile.PNG?raw=true)
+
+## edit profile pekerja
+![edituser](https://github.com/aliefabdussalam/week3/blob/main/edit%20profile%20pekerja%20mobile.PNG?raw=true)
