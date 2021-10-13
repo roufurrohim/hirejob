@@ -1,8 +1,9 @@
+/* eslint-disable array-callback-return */
 import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Listmsg.css"
-import { useHistory } from "react-router-dom"
 import { FaArrowLeft } from 'react-icons/fa';
+import { FiSend } from 'react-icons/fi'
 
 const List = ({dataChat, sendMessage, setMsg, setCn}) => {
   const {receiver, detailById, detail, listMsgHistory, listMsg, msg} = dataChat
@@ -33,7 +34,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     {e.sender === detail.id ? 
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
@@ -41,7 +42,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-start', alignItems:'flex-end', height:'unset'}}>
                         <img style={{marginRight:'20px'}} src={`${API_URL}uploads/${detailById.image}`} alt="" srcset="" />
-                        <div className="text" style={{ width:"auto", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
                           <p>{e.msg}</p>
                         </div>
                       </div>)}
@@ -66,7 +67,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
               }}>Please select a chat to start messaging</p>
               </div>
             )}
-            {receiver?
+            {
             listMsg.map((e, i) => {
               if(e.receiver === receiver || e.sender === receiver) {
                 return (
@@ -74,7 +75,7 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     {e.sender === detail.id ?
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-end', alignItems:'flex-start', height:'unset'}}>
-                        <div className="text" style={{ width:"auto", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'skyblue', borderRadius:"35px 10px 35px 35px", display:"flex", alignItems:"center", justifyContent:"flex-end"}}>
                           <p>{e.msg}</p>
                         </div>
                         <img style={{marginLeft:'20px'}} src={`${API_URL}uploads/${detail.image}`} alt="" srcset="" />
@@ -82,27 +83,28 @@ const List = ({dataChat, sendMessage, setMsg, setCn}) => {
                     (
                       <div className="chatlist" style={{width:'100%', display:'flex', justifyContent:'flex-start', alignItems:'flex-end', height:'unset'}}>
                         <img style={{marginRight:'20px'}} src={`${API_URL}uploads/${detailById.image}`} alt="" srcset="" />
-                        <div className="text" style={{ width:"auto", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
+                        <div className="text" style={{ width:"50%", backgroundColor:'#7E98DF', borderRadius:"35px 35px 35px 10px", display:"flex", alignItems:"center", justifyContent:"flex-start"}}>
                           <p>{e.msg}</p>
                         </div>
                       </div>)}
                   </div>
                 )
               }
-            }):null}
+            })}
           </div>
           {receiver ? (
             <div className='sendbox'>
               <div className="send">
                 <form onSubmit={sendMessage}>
                   <input type="text"
+                  className="inputMsg"
                   value={msg}
                   placeholder="Type your message..."
                   onChange={(e) =>setMsg(e.target.value)}/>
                 </form>
                 <div className='rowbox'>
-                <div className='imgbox' style={{cursor:'pointer',backgroundColor:'#5E50A1', width:'40px', height:'40px', borderRadius:'40px'}} onClick={sendMessage}>
-                <img src={`${API_URL}helpers/send.png`} style={{width:'13px', height:'13px'}}  alt="" srcset="" />
+                <div className='imgbox' style={{cursor:'pointer',backgroundColor:'#5E50A1', width:'45px', height:'45px', borderRadius:'50%'}} onClick={sendMessage}>
+                  <FiSend size={28} style={{color: "#fff"}} />
                 </div>
                 </div>
               </div>

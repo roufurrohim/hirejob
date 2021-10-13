@@ -10,6 +10,7 @@ import { API_URL } from "../helpers/env";
 const ViewProfile = () => {
   const history = useHistory();
   const { id } = useParams();
+  const status = localStorage.getItem("status")
 
   const dispatch = useDispatch();
   const dataStore = useSelector((state) => state.user);
@@ -23,8 +24,8 @@ const ViewProfile = () => {
 
   const [statusBtn, setStatusBtn] = useState(false);
 
-  const hire = (id) => {
-    history.push("/hire");
+  const hire = () => {
+    history.push(`/hire/${id}`);
   };
 
   const statusActive = () => {
@@ -76,7 +77,7 @@ const ViewProfile = () => {
                     <p className="bioWorker">{data.description}</p>
                   </div>
 
-                  <div className="row mt-3">
+                  <div className={status !== "0" ? "d-none" : "row mt-3"}>
                     <div className="col-12 handleBtn">
                       <button
                         type="button"
@@ -143,8 +144,8 @@ const ViewProfile = () => {
                           {
                             dataStore.portfolios.map((e, i) => (
                               <div key={i} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                <img src={e.picture} alt="portfolio" className="pictPortfolio" />
-                                <h5>{e.name}</h5>
+                                <img src={`${API_URL}uploads/${e.image}`} alt="portfolio" className="pictPortfolio" />
+                                <h5>{e.name_apps}</h5>
                               </div>
                             ))
                           }            
@@ -158,7 +159,7 @@ const ViewProfile = () => {
                       </div>
                     ) : (
                       <div className="row p-4">
-                        {/* {data.work_experiences.map((e, i) => (
+                        {dataStore.works.map((e, i) => (
                           <div key={i} className="col-lg-9 my-3 mx-5">
                             <div className="row">
                               <div className="col-lg-12">
@@ -182,7 +183,7 @@ const ViewProfile = () => {
                               </div>
                             </div>
                           </div>
-                        ))} */}
+                        ))}
                       </div>
                     )}
                   </div>

@@ -57,7 +57,9 @@ const Profile = () => {
           {dataStore.loadDetails === true ? (
             <div>loading..</div>
           ):(
-            <Company companydata={dataStore.details} />    
+            <Company 
+            handleLogout = {logout}
+            companydata={dataStore.details} />    
           )}
         </div>
 

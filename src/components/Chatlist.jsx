@@ -1,11 +1,11 @@
+/* eslint-disable array-callback-return */
 import React from "react"
 import { API_URL } from "../helpers/env"
 import "./css/Chatlist.css"
-import { useHistory } from "react-router-dom"
 
 const List = ({dataChat1, changeReceiver}) => {
   const {listUser, detail } = dataChat1
-  // console.log(listUser)
+  console.log(detail.status)
   return(
     <body className='chatlist'>
       <header className='hchat'>
@@ -18,7 +18,7 @@ const List = ({dataChat1, changeReceiver}) => {
         </div>
       ): (
         listUser.map((e, i) => {
-          if(e.id !== detail.id){
+          if(e.id !== detail.id && e.status !== detail.status){
             return (
               <div className="listuser" key={i} style={{display:'flex'}}>
                 <img src={`${API_URL}uploads/${e.image}`} style={{width:'40px', height:'40px', borderRadius:'40px', marginRight:'15px'}} alt="" srcset="" />

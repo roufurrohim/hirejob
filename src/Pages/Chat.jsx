@@ -1,11 +1,8 @@
-
 import React, {useEffect, useState} from "react";
 import { ACTION_GET_DETAILS2_USER, ACTION_GET_USERS, ACTION_GET_MYDETAILS_USER } from "../redux/action/users"
 import './css/Chat.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector, useDispatch } from "react-redux"
-import { API_URL } from "../helpers/env";
-import { useHistory } from "react-router-dom";
 import './css/Chat.css'
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
@@ -30,7 +27,7 @@ const Chat=(props)=> {
   
   const getData = (id) =>{
     dispatch(ACTION_GET_MYDETAILS_USER())
-    dispatch(ACTION_GET_USERS())  
+    dispatch(ACTION_GET_USERS(50))
   }
   socket.emit('login', detail.id);
   useEffect(() => {
@@ -38,7 +35,7 @@ const Chat=(props)=> {
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const [updData, setUpd]=useState()
+  
   const [listUser, setListUser] = useState([]);
   const changeReceiver = (id) => {
     dispatch(ACTION_GET_DETAILS2_USER(id))
@@ -48,10 +45,11 @@ const Chat=(props)=> {
       sec: 'col-lg-8 pt-5 none'
     })
     socket.emit("get-message", { receiver: id, sender: detail.id})
-    setListMsg([]);
+    
     socket.on("history-messages", (message) =>{
       setListMsgHistory(message);
     })
+    setListMsg([]);
   }
   const sendMessage = (e) => {
     e.preventDefault();
@@ -91,7 +89,7 @@ const Chat=(props)=> {
     listUser,
     detail
   }
-  
+  console.log(user.all)
   return(
     <div>
       <Navbar/>

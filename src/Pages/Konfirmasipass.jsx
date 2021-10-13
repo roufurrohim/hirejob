@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { ACTION_GET_DETAILS_USER, UPDATE_USER } from "../redux/action/users";
+import { ACTION_GET_DETAILS2_USER, UPDATE_USER } from "../redux/action/users";
 
 const Register = () => {
 
@@ -32,7 +32,7 @@ const Register = () => {
     const token = query.get("token")
 
     const getDataUser = () =>{
-        dispatch(ACTION_GET_DETAILS_USER(id));
+        dispatch(ACTION_GET_DETAILS2_USER(id));
     }
     const changeInput = (e) => {
         setFrom({
@@ -43,23 +43,23 @@ const Register = () => {
     useEffect(()=>{
         getDataUser()
         localStorage.setItem("token", token);   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
         setFrom({
-            name : user.details.name,
-            email: user.details.email,
-            no_telp: user.details.no_telp,
-            image: user.details.image,
-            status: user.details.status
+            name : user.details2.name,
+            email: user.details2.email,
+            no_telp: user.details2.no_telp,
+            image: user.details2.image,
+            status: user.details2.status
         });
-    },[user.details])
-
-    console.log(form.confirm)
+    },[user.details2])
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        // console.log(form)
+        console.log(form)
+        // eslint-disable-next-line no-mixed-operators
         if(form.confirm === undefined && form.password === undefined || form.confirm === "" && form.password === "" ){
             setError("Please fill out this field")
         }else if(form.confirm !== form.password){
@@ -70,7 +70,7 @@ const Register = () => {
                 confirm: ""
             })
         }else{
-            // console.log(form)
+            console.log(form)
             const formData = new FormData();
             formData.append("name", form.name);
             formData.append("email", form.email);
@@ -82,7 +82,7 @@ const Register = () => {
             .then((res)=>{
                 alert("Reset Password Success, Silahkan Login Kembali")
                 history.push("/login")
-                localStorage.removeItem("token")
+                // localStorage.removeItem("token")
                 setError("")
             }).catch((err)=>{
                 alert("Cannot Reset Password")
