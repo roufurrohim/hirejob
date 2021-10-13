@@ -143,8 +143,8 @@ const ViewProfile = () => {
                           {
                             dataStore.portfolios.map((e, i) => (
                               <div key={i} className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
-                                <img src={e.picture} alt="portfolio" className="pictPortfolio" />
-                                <h5>{e.name}</h5>
+                                <img src={`${API_URL}uploads/${e.image}`} alt="portfolio" className="pictPortfolio" />
+                                <h5>{e.name_apps}</h5>
                               </div>
                             ))
                           }            
@@ -158,7 +158,7 @@ const ViewProfile = () => {
                       </div>
                     ) : (
                       <div className="row p-4">
-                        {/* {data.work_experiences.map((e, i) => (
+                        {data.work_experiences.map((e, i) => (
                           <div key={i} className="col-lg-9 my-3 mx-5">
                             <div className="row">
                               <div className="col-lg-12">
@@ -182,7 +182,7 @@ const ViewProfile = () => {
                               </div>
                             </div>
                           </div>
-                        ))} */}
+                        ))}
                       </div>
                     )}
                   </div>

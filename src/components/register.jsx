@@ -17,7 +17,7 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                 <div className="ketBgRegis">Temukan developer berbakat & terbaik di berbagai bidang keahlian</div>
                 </div>
             </div>
-            <Col  className="Main-Register" >  
+            <Col lg="6" sm="12" className="Main-Register" >  
             <div className="bungkus">
                 <div className="ket-register">
                     <h1>Halo, Pewpeople</h1>
@@ -27,7 +27,7 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     <label>Nama</label>
                     <input
                     type="text"
-                    name="nama"
+                    name="name"
                     onChange={insertData}
                     value={Data.nama}
                     placeholder="Masukan nama perusahaan"

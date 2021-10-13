@@ -7,6 +7,7 @@ import { RiDeleteBinLine, RiDeleteBinFill } from "react-icons/ri";
 import { FaCloudUploadAlt } from "react-icons/fa"
 import "./css/EditWorker.css";
 import { useSelector } from "react-redux";
+import { API_URL } from "../helpers/env"
 
 const EditWorker = ({
   worker,
@@ -40,7 +41,7 @@ const EditWorker = ({
           <div className="workerEdit pt-5">
             <div className="imgRoundedEdit">
               <img
-                src={dataPerson.imagePrev}
+                src={`${API_URL}uploads/${dataPerson.imagePrev}`}
                 alt="imageWorker"
                 className="imgWorkerEdit"
               />
