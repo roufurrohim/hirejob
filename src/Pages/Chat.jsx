@@ -70,13 +70,13 @@ const Chat=(props)=> {
   };
   useEffect(() => {
     socket.on("list-message", (payload) =>{
-      console.log(payload)
+      
       setListMsg([...listMsg, payload])
     }) 
   })
   useEffect(()=> {
     setListUser(user.all)
- 
+    setListMsg([])
 
   }, [user, detail, message, detailById])
   
