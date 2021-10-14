@@ -35,9 +35,9 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                   <p className="bioWorker">{e.description}</p>
                 </div>
 
-                <div className="row mt-3 d-flex justify-content-center">
+                <div className="row mt-3 handleBtnMyProfile">
                   {/* <div className="col-12 d-none handleBtn"> */}
-                  <div className={status === '1' ? "col-11 handleBtn" : "d-none" }>
+                  <div className={status === '1' ? "col-11" : "d-none" }>
                     <button
                       type="button"
                       onClick={() => handleEdit('1')}
@@ -54,11 +54,11 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                     </button>
                   </div>
 
-                  <div className={status === '0' ? "col-12 handleBtn" : "d-none"}>
+                  <div className={status === '0' ? "col-12 handleBtnMyProfile" : "d-none"}>
                     <button
                       type="button"
                       onClick={() => toHire('1')}
-                      className="btn btnHire"
+                      className="btn btnHire text-center"
                     >
                       Hire
                     </button>
@@ -71,7 +71,7 @@ const Worker = ({ workerData, toHire, statusBtn, status, statusHandle, handleEdi
                     {e.skills.map((e, i) => (
                       <div
                         key={i}
-                        className="cardSkillsProfile"
+                        className="cardSkillsProfile my-3"
                       >
                         <p style={{margin:'0'}}>{e.name_skill}</p>
                       </div>

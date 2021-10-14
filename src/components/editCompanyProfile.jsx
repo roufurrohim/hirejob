@@ -6,7 +6,7 @@ import { API_URL } from "../helpers/env"
 import { ACTION_GET_MYDETAILS_USER, UPDATE_USER } from "../redux/action/users";
 
 const CompanyEdit = () =>{
-  const [data, setData] = useState({})
+  // const [data, setData] = useState({})
   // setData(companydata)
   const dispatch = useDispatch()
     const user = useSelector(state => state.user)

@@ -32,7 +32,7 @@ const usersReducer = (state=initialState, action) => {
             return {
                 ...state,
                 loadAll: false,
-                all: action.payload,
+                all: action.payload.result,
                 errorAllMessage: "Get User Success"
             }
 
