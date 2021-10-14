@@ -22,6 +22,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(ACTION_GET_DETAILS_USER(id, token))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   const [statusBtn, setStatusBtn] = useState(false);

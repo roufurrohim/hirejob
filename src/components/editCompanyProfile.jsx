@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { API_URL } from "../helpers/env"
