@@ -17,14 +17,14 @@ const Company = ({companydata, handleLogout}) => {
                         <div class="text-center">
                         <img src={`${API_URL}uploads/${e.image}`} alt="" class="rounded-circle mt-3" style={{height:"120px", width:"120px", objectFit:'cover' }}></img>
                         <div>
-                            <h5 class="text-center mb-2 head mt-3">{e.name}</h5>
+                            <h2 class="text-center mb-2 head mt-3">{e.name}</h2>
                         </div>
                         <div>
                             <p class="text-center mb-1 text-muted mt-1">{e.sector}</p>
                         </div>
-                        <div class="d-flex offset-lg-5 offset-2"> 
+                        <div class="d-flex offset-lg-5 offset-2 text-center ps-5"> 
                             <img src="https://raw.githubusercontent.com/aliefabdussalam/week3/main/map-pin%20(4)%201.png" alt=""style={{height:"20px", width:"20px"}}/>
-                            <p class="text-center mb-4 text-muted">{e.city}</p>
+                            <p class="text-center mb-4 text-muted ps-2">{e.city}</p>
                         </div>
                         <p class="text-center mb-4 text-muted col-lg-4 offset-lg-4 col-xs-12">{e.descriptions}</p>
                         <Link to="/editprofile/0">
@@ -32,6 +32,7 @@ const Company = ({companydata, handleLogout}) => {
                             Edit Profile
                         </button>
                         </Link>
+                        
                              <button
                                 type="button"
                                 onClick={handleLogout}
