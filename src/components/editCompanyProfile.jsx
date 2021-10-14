@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { API_URL } from "../helpers/env"
 import { ACTION_GET_MYDETAILS_USER, UPDATE_USER } from "../redux/action/users";
 
 const CompanyEdit = () =>{
-  const [data, setData] = useState({})
+  // const [data, setData] = useState({})
   // setData(companydata)
   const dispatch = useDispatch()
     const user = useSelector(state => state.user)

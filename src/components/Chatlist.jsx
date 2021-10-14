@@ -5,7 +5,7 @@ import "./css/Chatlist.css"
 
 const List = ({dataChat1, changeReceiver}) => {
   const {listUser, detail } = dataChat1
-  console.log(detail.status)
+  console.log(listUser)
   return(
     <body className='chatlist'>
       <header className='hchat'>

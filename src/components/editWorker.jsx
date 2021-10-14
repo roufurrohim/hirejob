@@ -1,25 +1,28 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { IoLocationOutline } from "react-icons/io5";
-import { TiDeleteOutline } from "react-icons/ti";
+// import { TiDeleteOutline } from "react-icons/ti";
 import { MdModeEdit } from "react-icons/md";
-import { RiDeleteBinLine, RiDeleteBinFill } from "react-icons/ri";
-import { FaCloudUploadAlt } from "react-icons/fa"
+// import { RiDeleteBinLine, RiDeleteBinFill } from "react-icons/ri";
+// import { FaCloudUploadAlt } from "react-icons/fa";
 import "./css/EditWorker.css";
-import { useSelector } from "react-redux";
-import { API_URL } from "../helpers/env"
+// import { useSelector } from "react-redux";
+import { API_URL } from "../helpers/env";
 
 const EditWorker = ({
   worker,
   handleChange,
   handleSkill,
   delSkills,
+  dataSkills,
   handleAddSkills,
   addSkill,
+  workExp,
   addWork,
   handleAddWorks,
   delWorks,
   delPortfolio,
+  dataPortfolio,
   changeAddPortfolio,
   addPortfolio,
   handleAddPortfolio,
@@ -32,7 +35,11 @@ const EditWorker = ({
   dataPerson,
   handlePerson,
   toCancel,
-  handleSubmitWorker
+  handleSubmitWorker,
+  changeHandlerImage,
+  handleClickImg,
+  refr,
+  changeHandlerImagePort,
 }) => {
   return (
     <div>
@@ -41,13 +48,30 @@ const EditWorker = ({
           <div className="workerEdit pt-5">
             <div className="imgRoundedEdit">
               <img
-                src={`${API_URL}uploads/${dataPerson.imagePrev}`}
+                src={
+                  dataPerson.imagePrev === ""
+                    ? `${API_URL}uploads/${dataPerson.image}`
+                    : dataPerson.imagePrev
+                }
                 alt="imageWorker"
                 className="imgWorkerEdit"
               />
             </div>
             <div className="packEditImg">
-              <button type="submit" className="btn btnEdit">
+              <input
+                type="file"
+                name="image"
+                id="image"
+                onChange={changeHandlerImage}
+                ref={refr}
+                accept="image/png, image/jpg, image/jpeg"
+                style={{ display: "none" }}
+              />
+              <button
+                type="button"
+                onClick={handleClickImg}
+                className="btn btnEdit"
+              >
                 <MdModeEdit size={22} className="me-1" />
                 Edit
               </button>
@@ -67,11 +91,19 @@ const EditWorker = ({
             </div>
           </div>
           <div className="row my-4">
-            <button type="submit" onClick={handleSubmitWorker} className="btn col-lg-12 ms-2 btnSave">
+            <button
+              type="submit"
+              onClick={handleSubmitWorker}
+              className="btn col-lg-12 ms-2 btnSave"
+            >
               Save
             </button>
 
-            <button type="button" onClick={toCancel} className="btn col-lg-12 ms-2 mt-3 btnSave">
+            <button
+              type="button"
+              onClick={toCancel}
+              className="btn col-lg-12 ms-2 mt-3 btnSave"
+            >
               Cancel
             </button>
           </div>
@@ -84,9 +116,6 @@ const EditWorker = ({
             </div>
             <div className="border-bottom brdBottom"></div>
             <div className="formEditData">
-              {
-
-              }
               <Form>
                 <FormGroup className="my-4">
                   <Label className="labelForm">Nama Lengkap</Label>
@@ -132,6 +161,41 @@ const EditWorker = ({
                   />
                 </FormGroup>
 
+                <FormGroup className="my-4 row justify-content-between">
+                  <div className="col-lg-3">
+                    <Label className="labelForm">Github</Label>
+                    <Input
+                      type="text"
+                      name="github"
+                      value={dataPerson.github}
+                      onChange={handlePerson}
+                      placeholder="username github"
+                    />
+                  </div>
+
+                  <div className="col-lg-3">
+                    <Label className="labelForm">Gitlab</Label>
+                    <Input
+                      type="text"
+                      name="gitlab"
+                      value={dataPerson.gitlab}
+                      onChange={handlePerson}
+                      placeholder="username gitlab"
+                    />
+                  </div>
+
+                  <div className="col-lg-3">
+                    <Label className="labelForm">Instagram</Label>
+                    <Input
+                      type="text"
+                      name="ig"
+                      value={dataPerson.ig}
+                      onChange={handlePerson}
+                      placeholder="@example"
+                    />
+                  </div>
+                </FormGroup>
+
                 <FormGroup className="my-4">
                   <Label className="labelForm">Deskripsi singkat</Label>
                   <Input
@@ -154,23 +218,26 @@ const EditWorker = ({
             <div className="border-bottom brdBottom"></div>
             <div className="row d-flex flex-lg-row mt-4">
               {
-                worker[0].skills.length === 0 ? <p>Harap Tambah Skills</p> :
-                worker[0].skills.map((e, i) => (
+              dataSkills.length === 0 ? (
+                <p>Harap Tambahkan Skills !!!</p>
+              ) : (
+                dataSkills.map((e, i) => (
                   <div
                     key={i}
                     className="col-lg-2 cardSkillsEdit text-center d-flex justify-content-center align-items-center mx-2 my-3"
                   >
                     <div>{e.name_skill}</div>
-  
-                    <div className="ms-2 btnDel" onClick={() => delSkills(i)}>
+
+                    {/* <div className="ms-2 btnDel" onClick={() => delSkills(i)}>
                       <span className="text-end">
                         <TiDeleteOutline size={26} className="text-end" />
                       </span>
-                    </div>
-                  </div>
+                    </div> */}
+                  </div> 
                 ))
+              )
               }
-              
+
               <div className="mt-5">
                 <Form onSubmit={handleAddSkills} className="row">
                   <FormGroup className="col-lg-10 col-8">
@@ -183,7 +250,10 @@ const EditWorker = ({
                     />
                   </FormGroup>
 
-                  <Button type="submit" className="btn col-lg-2 col-4 btnAddSkills">
+                  <Button
+                    type="submit"
+                    className="btn col-lg-2 col-4 btnAddSkills"
+                  >
                     Simpan
                   </Button>
                 </Form>
@@ -196,14 +266,18 @@ const EditWorker = ({
               <h3 className="titleFormEdit">Pengalaman Kerja</h3>
             </div>
             <div className="border-bottom brdBottom"></div>
-            {/* {worker.workExperience.map((e, i) => (
-              <div className="formEditData mt-5">
-                <div className="row justify-content-between align-items-center">
-                  <div className="col-lg-5 titleWorkExp">
-                    <h5>Pengalaman {i + 1}</h5>
-                  </div>
+            {
+            workExp.length === 0 ? (
+              <p>Data Kosong</p>
+            ) : (
+              workExp.map((e, i) => (
+                <div className="formEditData mt-5">
+                  <div className="row justify-content-between align-items-center">
+                    <div className="col-lg-5 titleWorkExp">
+                      <h5>Pengalaman {i + 1}</h5>
+                    </div>
 
-                  <div className=" col-lg-5 text-danger delWorks d-flex align-items-center justify-content-end">
+                    {/* <div className=" col-lg-5 text-danger delWorks d-flex align-items-center justify-content-end">
                     <button
                       type="button"
                       className="btn btnDelWorkExp"
@@ -214,66 +288,67 @@ const EditWorker = ({
                       </small>
                       Hapus
                     </button>
+                  </div> */}
                   </div>
+
+                  <Form>
+                    <FormGroup className="my-4">
+                      <Label className="labelForm">Posisi</Label>
+                      <Input
+                        type="text"
+                        name="position"
+                        value={e.position}
+                        placeholder="Masukan nama lengkap"
+                      />
+                    </FormGroup>
+
+                    <FormGroup className="my-4">
+                      <Label className="labelForm">Nama perusahaan</Label>
+                      <Input
+                        type="text"
+                        name="company"
+                        value={e.company}
+                        placeholder="Masukan job desk"
+                      />
+                    </FormGroup>
+
+                    <FormGroup className="my-4 row justify-content-between">
+                      <div className="col-lg-5">
+                        <Label className="labelForm">Bulan/Tahun Mulai</Label>
+                        <Input
+                          type="text"
+                          name="start_work"
+                          value={e.start_work}
+                          placeholder="Masukan tempat kerja"
+                        />
+                      </div>
+
+                      <div className="col-lg-5">
+                        <Label className="labelForm">Bulan/Tahun Akhir</Label>
+                        <Input
+                          type="text"
+                          name="end_work"
+                          value={e.end_work}
+                          placeholder="Masukan tempat kerja"
+                        />
+                      </div>
+                    </FormGroup>
+
+                    <FormGroup className="my-4">
+                      <Label className="labelForm">Deskripsi singkat</Label>
+                      <Input
+                        type="textarea"
+                        name="description"
+                        value={e.description}
+                        placeholder="Tuliskan deskripsi singkat"
+                        className="inputDesc"
+                      />
+                    </FormGroup>
+                  </Form>
+                  <div className="border-bottom brdBottom"></div>
                 </div>
-
-                <Form>
-                  <FormGroup className="my-4">
-                    <Label className="labelForm">Posisi</Label>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={e.position}
-                      placeholder="Masukan nama lengkap"
-                    />
-                  </FormGroup>
-
-                  <FormGroup className="my-4">
-                    <Label className="labelForm">Nama perusahaan</Label>
-                    <Input
-                      type="text"
-                      name="special_skill"
-                      value={e.company}
-                      placeholder="Masukan job desk"
-                    />
-                  </FormGroup>
-
-                  <FormGroup className="my-4 row justify-content-between">
-                    <div className="col-lg-5">
-                      <Label className="labelForm">Bulan/Tahun Mulai</Label>
-                      <Input
-                        type="text"
-                        name="workplace"
-                        value={e.startWork}
-                        placeholder="Masukan tempat kerja"
-                      />
-                    </div>
-
-                    <div className="col-lg-5">
-                      <Label className="labelForm">Bulan/Tahun Akhir</Label>
-                      <Input
-                        type="text"
-                        name="workplace"
-                        value={e.endWork}
-                        placeholder="Masukan tempat kerja"
-                      />
-                    </div>
-                  </FormGroup>
-
-                  <FormGroup className="my-4">
-                    <Label className="labelForm">Deskripsi singkat</Label>
-                    <Input
-                      type="textarea"
-                      name="description"
-                      value={e.description}
-                      placeholder="Tuliskan deskripsi singkat"
-                      className="inputDesc"
-                    />
-                  </FormGroup>
-                </Form>
-                <div className="border-bottom brdBottom"></div>
-              </div>
-            ))} */}
+              ))
+            )}
             <div className="mt-5">
               <Form onSubmit={handleAddWorks}>
                 <FormGroup className="my-4">
@@ -300,22 +375,22 @@ const EditWorker = ({
 
                 <FormGroup className="my-4 row justify-content-between">
                   <div className="col-lg-5">
-                    <Label className="labelForm">Bulan/Tahun Mulai</Label>
+                    <Label className="labelForm">Bulan-Tahun Mulai</Label>
                     <Input
                       type="text"
-                      name="startWork"
-                      value={addWork.startWork}
+                      name="start_work"
+                      value={addWork.start_work}
                       onChange={handleChange}
                       placeholder="Januari 2018"
                     />
                   </div>
 
                   <div className="col-lg-5">
-                    <Label className="labelForm">Bulan/Tahun Akhir</Label>
+                    <Label className="labelForm">Bulan-Tahun Akhir</Label>
                     <Input
                       type="text"
-                      name="endWork"
-                      value={addWork.endWork}
+                      name="end_work"
+                      value={addWork.end_work}
                       onChange={handleChange}
                       placeholder="Desember 2018"
                     />
@@ -347,25 +422,29 @@ const EditWorker = ({
             <div className="border-bottom brdBottom"></div>
 
             <div className="row mb-4">
-              {/* {worker.portfolio.map((e, i) => (
-                <div
-                  key={i}
-                  className="col-lg-4 d-flex flex-column justify-content-center align-items-center"
-                >
+              {dataPortfolio.length === 0 ? (
+                <p>Data Kosong</p>
+              ) : (
+                dataPortfolio.map((e, i) => (
                   <div
+                    key={i}
+                    className="col-lg-4 d-flex flex-column justify-content-center align-items-center"
+                  >
+                    {/* <div
                     className="btn text-danger btnDelPortfolio"
                     onClick={() => delPortfolio(i)}
                   >
                     <RiDeleteBinFill size={28} />
+                  </div> */}
+                    <img
+                      src={`${API_URL}uploads/${e.image}`}
+                      alt="portfolio"
+                      className="pictEditPortfolio"
+                    />
+                    <h5>{e.name_apps}</h5>
                   </div>
-                  <img
-                    src={e.picture}
-                    alt="portfolio"
-                    className="pictEditPortfolio"
-                  />
-                  <h5>{e.name}</h5>
-                </div>
-              ))} */}
+                ))
+              )}
             </div>
 
             <div className="border-bottom brdBottom"></div>
@@ -376,8 +455,8 @@ const EditWorker = ({
                   <Label className="labelForm">Nama aplikasi</Label>
                   <Input
                     type="text"
-                    name="name"
-                    value={addPortfolio.name}
+                    name="name_apps"
+                    value={addPortfolio.name_apps}
                     onChange={changeAddPortfolio}
                     placeholder="Masukan nama aplikasi"
                   />
@@ -387,45 +466,49 @@ const EditWorker = ({
                   <Label className="labelForm">Link repository</Label>
                   <Input
                     type="text"
-                    name="repository"
-                    value={addPortfolio.repository}
+                    name="link_repo"
+                    value={addPortfolio.link_repo}
                     onChange={changeAddPortfolio}
                     placeholder="Masukan link repository"
                   />
                 </FormGroup>
 
-                    <FormGroup tag="fieldset" onChange={changeAddPortfolio}>
+                <FormGroup tag="fieldset" onChange={changeAddPortfolio}>
                   <legend className="col-form-label col-sm-2 labelForm">
                     Radio Buttons
                   </legend>
                   <div className="row ms-1">
                     <FormGroup check className="col-5 btnActive">
                       <Label check>
-                        <Input 
-                        type="radio" 
-                        name="typeApps"
-                        value="mobile"
-                        // checked={worker.typeApps === "mobile"}
-                        onChange={changeAddPortfolio}
-                         /> Aplikasi mobile
+                        <Input
+                          type="radio"
+                          name="type"
+                          value="mobile"
+                          // checked={worker.typeApps === "mobile"}
+                          onChange={changeAddPortfolio}
+                        />{" "}
+                        Aplikasi mobile
                       </Label>
                     </FormGroup>
 
-                    <FormGroup check className="col-5 btnActive ms-lg-5 mt-lg-0 mt-3">
+                    <FormGroup
+                      check
+                      className="col-5 btnActive ms-lg-5 mt-lg-0 mt-3"
+                    >
                       <Label check>
-                        <Input 
-                        type="radio" 
-                        name="typeApps"
-                        value="web"
-                        // checked={worker.typeApps === "web"}
-                        onChange={changeAddPortfolio}
-                         /> Aplikasi web
+                        <Input
+                          type="radio"
+                          name="type"
+                          value="web"
+                          // checked={worker.typeApps === "web"}
+                          onChange={changeAddPortfolio}
+                        />{" "}
+                        Aplikasi web
                       </Label>
                     </FormGroup>
                   </div>
-
-                  </FormGroup>
-                  <div className="wrapper">
+                </FormGroup>
+                {/* <div className="wrapper">
                     <div
                       className="drop_zone"
                       onDragOver={handleOndragOver}
@@ -450,9 +533,25 @@ const EditWorker = ({
                       </div>
                     )}
                   </div>
+                 */}
+                <div className="imageDrag mt-5">
+                  <img
+                    src={addPortfolio.imgPrev}
+                    alt="imagePreview"
+                    className="imgPreview"
+                  />
+                  <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  onChange={changeHandlerImagePort}
+                  ref={refr}
+                  accept="image/png, image/jpg, image/jpeg"
+                />
+                </div>
                 
                 <button type="submit" className="col-12 btnAddWork">
-                Tambah portofolio
+                  Tambah portofolio
                 </button>
               </Form>
             </div>

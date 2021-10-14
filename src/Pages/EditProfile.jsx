@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,120 +6,28 @@ import NavbarHome from "../components/Navbar";
 import FooterHome from "../components/Footer";
 import EditWorker from "../components/editWorker";
 import CompanyEdit from "../components/editCompanyProfile";
-import { ACTION_GET_DETAILS2_USER, UPDATE_USER } from "../redux/action/users";
+import { ACTION_GET_MYDETAILS_USER, UPDATE_WORKER, INSERT_ADD_SKILLS, INSERT_ADD_WORK_EXP, INSERT_ADD_PORTFOLIO } from "../redux/action/users";
 
 const EditProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory()
-  const [user, setUser] = useState({
-    id: 1,
-    name: "Gilang Rangga",
-    sector: "Financial",
-    image:
-      "https://images.unsplash.com/photo-1633423010179-a9e26e1f7c8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=725&q=80",
-    city: "Purwokerto, Jawa Tengah",
-    descriptions:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.",
-    email: "gilang@mail.com",
-    no_telp: "0891234",
-    ig: "@rangga1917",
-    github: "github.com/gilang666",
-    gitlap: "gilangggg",
-    linkedin: "linkedin.com/gilang",
-  });
-
-  const changeUserCompany = (event) => {
-    setUser({
-      ...user,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const idUser = localStorage.getItem("id")
 
   const dataStore = useSelector((state) => state.user);
-  const dataUser = dataStore.details[0]
-  
+  const dataUser = dataStore.mydetails
+    console.log(dataUser)
   useEffect(() => {
-    dispatch(ACTION_GET_DETAILS2_USER(id))
+    dispatch(ACTION_GET_MYDETAILS_USER())
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  const [worker, setWorker] = useState({
-    id: 1,
-    name: "Louis Tomlinson",
-    pict: "https://s3-alpha-sig.figma.com/img/792c/65bc/52b72a55a079dca3c59ba0db0eb236aa?Expires=1634515200&Signature=gMfQ6-wjayQvRm6c5oVC8Slh2O8KOP3SeMCSzWd15~app3qlU20iZag3ZyQha67Ks1dyzmgtBabSQIBmU~u6suS6SpepkOEB7jpMU8mNN4qzymf7GzjxBi2rIQv2oPGPXsLxbyQpufRfFMCHD3n9~bwRO37Rj-5XF67QuX9bPTVyL5bzmWahSW~07cbTbih0gACVFDu2KYeF~XSsbpHzTMLu3--lr2PTrzAVihgN3ip0pS5HEcZ-cYvsd8Ws5ZAT0nVIMjwmEf86ImwHLqYyHsFv9jb-AeaRzwYTz1mZzcDgvNNe-XgHtWgGZD5pb4Fh~M2udeI7E2goR8v5K5NaUA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-    special_skill: "Web Developer",
-    workplace: "freelance",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.",
-    email: "Louistommo@gmail.com",
-    ig: "@Louist91",
-    github: "@Louistommo",
-    gitlab: "@Louistommo91",
-    skills: [
-      {
-        name: "Phyton",
-      },
-      {
-        name: "Laravel",
-      },
-      {
-        name: "Golang",
-      },
-      {
-        name: "JavaScript",
-      },
-    ],
-    portfolio: [
-      {
-        id: 1,
-        name: "Reminder App",
-        repository: "github.com",
-        picture:
-          "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-      },
-      {
-        id: 2,
-        name: "Reminder App",
-        repository: "github.com",
-        picture:
-          "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-      },
-      {
-        id: 3,
-        name: "Reminder App",
-        repository: "github.com",
-        picture:
-          "https://s3-alpha-sig.figma.com/img/5c71/e11f/e280c7c56c85ab391a054dfa068f74b0?Expires=1634515200&Signature=Y5ZvR2k-hSZNJLO7CZrwFkcUhjrchSO49EB0dLDBK~VWo1cojh4oADJfnmB5L7h9UD-kcK~fn39FMZ43Cw769dpfdWBVRsBdAk5J81qt-h-f3QxXMPDfZbF9A6xZzd2IDn1Z48M~W92FqsHrFnx~afpSdRdWR7zHOLDm43GIoGBdsw1OHjCPArQhVtyHiTffByoPLiWqcmWG2OKoY0lC7N2Sf1MOiGkSCT5ra4qag8f0u-oq-gKljiwWV9G6DIWqYJ5Off-SVbe0t62G~WgUhYs9TBoyyncm61mpJEVWxsw3dC~rAdRr9zQc5nKtbooEJQyGd9Uccqx9L-AT4oYNSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-      },
-    ],
-    workExperience: [
-      {
-        id: 1,
-        position: "Engineer",
-        company: "Tokopedia",
-        startWork: "July 2019",
-        endWork: "January 2020",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.",
-      },
-      {
-        id: 2,
-        position: "Engineer",
-        company: "Tokopedia",
-        startWork: "July 2019",
-        endWork: "January 2020",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.",
-      },
-    ],
-  });
 
 
   const [dataPerson, setDataPerson] = useState(
     {
       nama: dataUser.name,
       image: dataUser.image,
-      imagePrev: dataUser.image,
+      imagePrev: "",
       city: dataUser.city,
       special_skill: dataUser.special_skill,
       workplace: dataUser.workplace,
@@ -130,57 +39,98 @@ const EditProfile = () => {
       gitlab: dataUser.gitlab,
     }
   )
-  
+  console.log(dataUser.skills, )
 
+  const [workExp, setWorkExp] = useState(dataUser.work_experiences === undefined ? [] : dataUser.work_experiences);
+  
+  const [dataSkills, setDataSkills] = useState(dataUser.skills === undefined ? [] : dataUser.skills)
+  
+  const [portfolio, setPortfolio] = useState(dataUser.portfolios === undefined ? [] : dataUser.portfolios)
+  
   const [addSkill, setAddSkill] = useState("");
+
+  const [msgSkill, setMsgSkill] = useState("")
+  
+  const [msgWork, setMsgWork] = useState("")
 
   const [addWork, setAddWork] = useState({
     position: "",
     company: "",
-    startWork: "",
-    endWork: "",
+    start_work: "",
+    end_work: "",
     description: "",
+    users_id: parseInt(idUser),
   });
 
   const [addPortfolio, setAddPortfolio] = useState({
-    name: "",
-    picture: "",
+    name_apps: "",
+    image: "",
+    imgPrev:"",
     type: "",
-    repository: "",
+    link_repo: "",
+    users_id: parseInt(idUser),
   });
 
   const changePerson = (e) => {
     const {name, value} = e.target
-    console.log(name, value)
     setDataPerson({
       ...dataPerson,
       [name]: value,
     })
   }
 
-  // handle drag & drop
-  const fileInput = useRef(null);
-  const [imagePort, setImagePort] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState("");
-  const handleFile = (file) => {
-    setImagePort(file);
-    console.log(URL.createObjectURL(file));
-    setPreviewUrl(URL.createObjectURL(file));
+  // handle uploads image profile
+  const changeHandlerImage = (e) => {
+    setDataPerson({
+      ...dataPerson,
+      image: e.target.files[0],
+      imagePrev: URL.createObjectURL(e.target.files[0]),
+    });
   };
 
-  const handleOndragOver = (event) => {
-    event.preventDefault();
-  };
-  const handleOndrop = (event) => {
-    //prevent the browser from opening the image
-    event.preventDefault();
-    event.stopPropagation();
-    //let's grab the image file
-    let imageFile = event.dataTransfer.files[0];
-    handleFile(imageFile);
-  };
+  const hiddenFileInput = useRef(null);
+
+  const handleClickImg = e => {
+    hiddenFileInput.current.click()
+  }
+
+  // handle drag & drop
+  // const fileInput = useRef(null);
+  // const [imagePort, setImagePort] = useState(null);
+  // const [previewUrl, setPreviewUrl] = useState("");
+  // const handleFile = (file) => {
+  //   setImagePort(file);
+  //   setPreviewUrl(URL.createObjectURL(file));
+  // };
+
+  // const handleOndragOver = (event) => {
+  //   event.preventDefault();
+  // };
+  // const handleOndrop = (event) => {
+  //   //prevent the browser from opening the image
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   //let's grab the image file
+  //   const fileImg = event.target.files[0]
+  //   let imageFile = event.dataTransfer.files[0];
+  //   setPortfolio({
+  //     ...portfolio,
+  //     image: fileImg,
+  //   })
+    
+  //   handleFile(imageFile);
+  // };
   // end to handle drag & drop
 
+  const changeHandlerImagePort = (e) => {
+    setAddPortfolio({
+      ...addPortfolio,
+      image: e.target.files[0],
+      imgPrev: URL.createObjectURL(e.target.files[0]),
+    });
+  };
+
+  // handle change work
   const changeWorker = (e) => {
     const { name, value } = e.target;
     setAddWork({
@@ -199,103 +149,121 @@ const EditProfile = () => {
 
   const changeSkill = (e) => {
     const { value } = e.target;
-    setAddSkill(value);
+    setAddSkill(value)
   };
 
-  const delSkills = (i) => {
-    const data = [...worker.skills];
-    data.splice(i, 1);
-    setWorker({
-      ...worker,
-      skills: [...data],
-    });
-  };
+  // const delSkills = (i) => {
+  //   const data = [...dataSkills];
+  //   data.splice(i, 1);
+  //   setDataSkills([...data])
+  // };
 
-  const delWorks = (i) => {
-    const data = [...worker.workExperience];
-    data.splice(i, 1);
-    setWorker({
-      ...worker,
-      workExperience: [...data],
-    });
-  };
+  // const delWorks = (i) => {
+  //   const data = [...workExp];
+  //   data.splice(i, 1);
+  //   setWorkExp({
+  //     ...workExp,
+  //     workExperience: [...data],
+  //   });
+  // };
 
-  const delPortfolio = (i) => {
-    const data = [...worker.portfolio];
-    data.splice(i, 1);
-    setWorker({
-      ...worker,
-      portfolio: [...data],
-    });
-  };
+  // const delPortfolio = (i) => {
+  //   const data = [...worker.portfolio];
+  //   data.splice(i, 1);
+  //   setWorker({
+  //     ...worker,
+  //     portfolio: [...data],
+  //   });
+  // };
 
   // handdle submit Add portfolio
   const handleAddPortfolio = (e) => {
     e.preventDefault();
-    setWorker({
-      ...worker,
-      portfolio: [
-        ...worker.portfolio,
-        { ...addPortfolio, picture: previewUrl },
-      ],
-    });
+    setPortfolio([...portfolio, addPortfolio])
+    console.log(addPortfolio)
+    const formData = new FormData()
+    formData.append("name_apps", addPortfolio.name_apps);
+    formData.append("link_repo", addPortfolio.link_repo);
+    formData.append("image", addPortfolio.image);
+    formData.append("type", addPortfolio.type);
+    INSERT_ADD_PORTFOLIO(idUser, formData).then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
     setAddPortfolio({
-      name: "",
-      picture: "",
-      typeApps: "",
-      repository: "",
+      name_apps: "",
+      image: "",
+      type: "",
+      link_repo: "",
+      imagePrev: ""
     });
-    setImagePort(null);
-    setPreviewUrl("");
-    console.log(addPortfolio);
+    // setImagePort(null);
+    // setPreviewUrl("");
   };
 
   // handdle submit Add Skills
   const handleAddSkills = (e) => {
     e.preventDefault();
-
-    setWorker({
-      ...worker,
-      skills: [...worker.skills, { name: addSkill }],
-    });
+    setDataSkills([...dataSkills, {name_skill: addSkill}])
+    const payload = {
+      name_skill: addSkill,
+      users_id: parseInt(idUser)
+    }
+    INSERT_ADD_SKILLS(payload)
+    .then((res) => {
+      setMsgWork(res.message)
+    })
+    .catch((err) => {
+      alert(err.response)
+    })
     setAddSkill("");
   };
 
   // handdle submit Add Works
   const handleAddWorks = (e) => {
     e.preventDefault();
-
-    setWorker({
-      ...worker,
-      workExperience: [...worker.workExperience, addWork],
-    });
+    INSERT_ADD_WORK_EXP(addWork)
+    setWorkExp([
+      ...workExp,
+      addWork,
+    ]);
     setAddWork({
       position: "",
       company: "",
-      startWork: "",
-      endWork: "",
+      start_work: "",
+      end_work: "",
       description: "",
+      users_id: parseInt(idUser)
     });
   };
 
   // handdle change submit data worker
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log(dataPerson)
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // console.log(dataPerson)
+  // };
 
   const handleSubmitWorker = (e) => {
     e.preventDefault()
+    console.log(dataPerson)
     const formData = new FormData()
     formData.append("name", dataPerson.nama);
     formData.append("email", dataPerson.email);
-    formData.append("password", dataPerson.password);
     formData.append("image", dataPerson.image);
+    formData.append("github", dataPerson.github);
+    formData.append("gitlab", dataPerson.gitlab);
+    formData.append("ig", dataPerson.ig);
     formData.append("special_skill", dataPerson.special_skill);
     formData.append("description", dataPerson.description);
     formData.append("workplace", dataPerson.workplace);
     formData.append("city", dataPerson.city);
-    UPDATE_USER(id, formData).then((res) => console.log(res)).catch((err) => alert(err.response.message))
+    UPDATE_WORKER(idUser, formData)
+    .then((res) => {
+      history.push(`/my-profile`)
+    })
+    .catch((err) => alert(err.response.message.message))
   }
   
   const cancel = () => {
@@ -316,31 +284,40 @@ const EditProfile = () => {
       </div>
       <div className={id === '1' ? "d-block" : "d-none"}>
         {
-          dataStore.loadDetails2 === true ? <h1>Loading...</h1> : 
+          dataStore.loadMyDetails === true ? <h1>Loading...</h1> : 
+          // <h1>Harusnya Muncul</h1>
           <EditWorker
           worker={dataStore.details}
           handleChange={changeWorker}
+          dataSkills={dataSkills}
           handleSkill={changeSkill}
-          delSkills={delSkills}
+          // delSkills={delSkills}
           handleAddSkills={handleAddSkills}
           addSkill={addSkill}
+          msgSkill={msgSkill}
+          workExp={workExp}
           addWork={addWork}
           handleAddWorks={handleAddWorks}
-          delWorks={delWorks}
+          // delWorks={delWorks}
+          dataPortfolio={portfolio}
           addPortfolio={addPortfolio}
           changeAddPortfolio={changePortfolio}
-          delPortfolio={delPortfolio}
+          // delPortfolio={delPortfolio}
           handleAddPortfolio={handleAddPortfolio}
-          fileInput={fileInput}
-          imagePort={imagePort}
-          previewUrl={previewUrl}
-          handleFile={handleFile}
-          handleOndragOver={handleOndragOver}
-          handleOndrop={handleOndrop}
+          // fileInput={fileInput}
+          // imagePort={imagePort}
+          // previewUrl={previewUrl}
+          // handleFile={handleFile}
+          // handleOndragOver={handleOndragOver}
+          // handleOndrop={handleOndrop}
           dataPerson={dataPerson}
           handlePerson={changePerson}
           toCancel={cancel}
           handleSubmitWorker={handleSubmitWorker}
+          changeHandlerImage={changeHandlerImage}
+          handleClickImg={handleClickImg}
+          refr={hiddenFileInput}
+          changeHandlerImagePort={changeHandlerImagePort}
         />
         }
         

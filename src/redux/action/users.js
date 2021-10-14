@@ -41,6 +41,7 @@ export const ACTION_GET_USERS_QUERY = (query) => {
                 type: "GET_USERS_FULLFILLED",
                 payload: res.data.result
             })
+            console.log(res.data.result)
         }).catch((err) => {
             dispatch({
                 type: "GET_USER_REJECTED",
@@ -158,6 +159,61 @@ export const FORGET_PASS = (data) =>{
           reject(err.response.data)
       })
   })
+}
+
+export const UPDATE_WORKER = (id,form) =>{
+    return new Promise((resolve, reject)=>{
+        const token = localStorage.getItem("token")
+        const headers = {
+            "Content-Type": "multipart/form-data",
+            "token" : token
+        }
+        axios.put(`${API_URL}user-worker/${id}`, form,  {headers})
+        .then((response)=>{
+            resolve(response.data)
+        }).catch((err)=>{
+            reject(err.response.data)
+        })
+    })
+  }
+  
+
+export const INSERT_ADD_SKILLS = (data) => {
+    return new Promise((resolve, reject)=>{
+        axios.post(`${API_URL}skill`,data)
+        .then((response)=>{
+            resolve(response.data)
+        }).catch((err)=>{
+            reject(err.response.data)
+        })
+    })
+}
+
+export const INSERT_ADD_WORK_EXP = (data) => {
+    return new Promise((resolve, reject)=>{
+        axios.post(`${API_URL}exp`,data)
+        .then((response)=>{
+            resolve(response.data)
+        }).catch((err)=>{
+            reject(err.response.data)
+        })
+    })
+}
+
+export const INSERT_ADD_PORTFOLIO = (id, data) => {
+    const token = localStorage.getItem("token")
+      const headers = {
+          "Content-Type": "multipart/form-data",
+          "token" : token
+      }
+    return new Promise((resolve, reject)=>{
+        axios.post(`${API_URL}portfolio/${id}`, data ,{headers})
+        .then((response)=>{
+            resolve(response.data)
+        }).catch((err)=>{
+            reject(err.response.data)
+        })
+    })
 }
 
 // const userDetailsPending = () => {

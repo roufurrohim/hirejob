@@ -82,6 +82,13 @@
     color: #9EA0A5;
 }
 
+.handleBtnMyProfile {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+}
+
 .handleBtn {
     display: flex;
     justify-content: center;

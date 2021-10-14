@@ -17,7 +17,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [postsPerPage, setPostPerPage] = useState(2);
+  const [postsPerPage, setPostPerPage] = useState(5);
   const [query, setQuery] = useState({
     search: "",
     sortby: "",
@@ -32,7 +32,8 @@ const Home = () => {
     
     const sentQuery = {
       search : useQuery.get("search"),
-      sortby: useQuery.get("sortby")
+      sortby: useQuery.get("sortby"),
+      page: useQuery.get("page")
     }
     if (sentQuery.search === null) {
       dispatch(ACTION_GET_USERS_QUERY(query));  
@@ -41,10 +42,6 @@ const Home = () => {
     }
     
   }, []);
-
-  // useEffect(() => {
-  //   setPostPerPage(dataStore.all.limit);
-  // }, [dataStore.all.limit]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -58,10 +55,10 @@ const Home = () => {
     e.preventDefault();
     history.push(`/home?search=${query.search}&sortby=${query.sortby}`)
     dispatch(ACTION_GET_USERS_QUERY(query));
-    // setQuery({
-    //   search: "",
-    //   sortby: "",
-    // });
+    setQuery({
+      search: "",
+      sortby: "",
+    });
   };
 
   const toProfile = (id) => {

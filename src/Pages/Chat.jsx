@@ -45,11 +45,10 @@ const Chat=(props)=> {
       sec: 'col-lg-8 pt-5 none'
     })
     socket.emit("get-message", { receiver: id, sender: detail.id})
-    
     socket.on("history-messages", (message) =>{
       setListMsgHistory(message);
+      setListMsg([]);
     })
-    setListMsg([]);
   }
   const sendMessage = (e) => {
     e.preventDefault();
@@ -72,7 +71,7 @@ const Chat=(props)=> {
     socket.on("list-message", (payload) =>{
       
       setListMsg([...listMsg, payload])
-    }) 
+    })
   })
   useEffect(()=> {
     setListUser(user.all)
