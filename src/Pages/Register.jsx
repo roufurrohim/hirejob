@@ -46,7 +46,8 @@ const Registers = () => {
                     history.push("/login")
                 }
             }).catch((err)=>{
-              alert("gagal")
+                console.log(err.message)
+              alert(err.message)
             })
         } else {
             alert("passwords dont macth")
