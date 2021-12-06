@@ -23,7 +23,7 @@
 .chatlist .schat{
   padding: 20px 6%;
   overflow: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .chatlist .schat::-webkit-scrollbar {

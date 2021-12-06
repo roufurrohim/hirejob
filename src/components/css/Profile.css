@@ -12,7 +12,6 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* background-color: tomato; */
 }
 .profile .row .imgbox{
   width: 100%;
@@ -20,7 +19,6 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  /* background-color: blue; */
 }
 .profile .row .imgbox img{
   height: 150px;
@@ -29,7 +27,6 @@
 }
 .profile .row .textbox{
   width: 100%;
-  /* background-color: chartreuse; */
 }
 .profile .row .textbox h3{
   font-size: 22px;
@@ -44,7 +41,6 @@
 .profile .row .address{
   width: 100%;
   margin-top: 5px;
-  /* background-color: burlywood; */
 }
 .profile .row .address img{
   height: 16px;
@@ -59,7 +55,6 @@
 }
 .profile .row .textbox2{
   width: 100%;
-  /* background-color: coral; */
 }
 .profile .row .textbox2 p{
   margin: 20px 0;
@@ -75,7 +70,6 @@
   width: 100%;
   padding: 0;
   flex-wrap: wrap;
-  /* background-color: cornflowerblue; */
 }
 .profile .row .skillbox .skill .box{
   background-color: #FBB01799;

@@ -6,22 +6,18 @@
 }
 .hire .asdhire{
   padding: 30px 0 30px 6%;
-  /* background-color: turquoise; */
 }
 .hire .sechire{
   padding: 30px 6% 30px 4%;
   height: 180vh;
-  /* background-color: tomato; */
 }
 .hire .sechire .row{
   margin: 0;
   width: 75%;
-  /* background-color: white; */
 }
 .hire .sechire .row .textbox{
   padding: 0;
   margin-bottom: 30px;
-  /* background-color: violet; */
 }
 .hire .sechire .row .textbox h1{
   font-family: Open Sans;
@@ -40,12 +36,10 @@
 }
 .hire .sechire .row .form{
   padding: 0;
-  /* background-color: turquoise; */
 }
 .hire .sechire .row .form .inputbox{
   width: 100%;
   margin-bottom: 25px;
-  /* background-color: yellowgreen; */
 }
 .hire .sechire .row .form .inputbox select{
   width: 100%;
@@ -93,16 +87,13 @@
 @media screen and (max-width: 576px) {
   .hire .asdhire{
     padding: 30px 10px;
-    /* background-color: turquoise; */
   }
   .hire .sechire{
     padding: 30px 10px;
     height: unset;
-    /* background-color: tomato; */
   }
   .hire .sechire .row{
     margin: 0;
     width: 100%;
-    /* background-color: white; */
   }
 }
