@@ -1,3 +1,10 @@
+.asdlogin{
+    padding: 20px 0 20px 4%;
+  }
+  .asdlogin img{
+    width: 550px;
+    height: 620px;
+  }
 .bungkusBg{
     /* background-color: chartreuse; */
     align-items: center;
@@ -117,9 +124,22 @@
 .info{
     margin-top: 10px;
 }
-
+.txt{
+    margin-top: 10px;
+    margin: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  #p2:hover{
+    color: #FBB017;
+    transform: scale(1.1);
+  }
+  
 @media screen and (min-width: 1900px){ 
-
+    .asdlogin{
+        width: 30%;
+    }
     .BgRegister{
         width: 92%;
         height: 92%;
@@ -148,8 +168,8 @@
 }
 
 @media screen and (max-width: 428px) {
-    .BgRegister{
-      display: none;
+    .asdlogin{
+        display: none;
     }
     .ket-register{
         text-align: start !important;

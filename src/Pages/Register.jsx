@@ -26,7 +26,10 @@ const Registers = () => {
             [e.target.name]:e.target.value
         })
     }
-
+    const handleLogin = (e) =>{
+        e.preventDefault();
+        history.push("/login")
+    }
     const insertPass = (e) => {
         setpass({
             ...pass,
@@ -62,6 +65,7 @@ const Registers = () => {
                 handleRegister={handleRegister}
                 Data={Data}
                 pass={pass}
+                handleLogin={handleLogin}
                 />
             </div>
             <div  className={id === '1' ? "d-block" : "d-none"} >
@@ -71,6 +75,7 @@ const Registers = () => {
                 handleRegister={handleRegister}
                 Data={Data}
                 pass={pass}
+                handleLogin={handleLogin}
                 />
             </div>
         </div>

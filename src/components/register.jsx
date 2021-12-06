@@ -4,19 +4,15 @@ import {
     Col,
     Container
   } from "reactstrap";
-import logo from '../images/logo.svg'
-import {Link} from 'react-router-dom'
 
-const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
+
+const Register = ({insertData, Data, insertPass, pass, handleRegister, handleLogin}) => {
     return(
         <Container fluid={true}>  
         <Row className="register">
-            <div className="bungkusBg" >
-                <div className="BgRegister" >
-                <img className="logo" src={logo} alt=""/>
-                <div className="ketBgRegis">Temukan developer berbakat & terbaik di berbagai bidang keahlian</div>
-                </div>
-            </div>
+        <aside className="asdlogin col-lg-6 ">
+              <img src="https://raw.githubusercontent.com/farizian/chatting/master/img/fixedbg.png" alt="" srcset="" />
+            </aside>
             <Col lg="6" sm="12" className="Main-Register" >  
             <div className="bungkus">
                 <div className="ket-register">
@@ -69,8 +65,11 @@ const Register = ({insertData, Data, insertPass, pass, handleRegister}) => {
                     />
                     <button type="submit">Daftar</button>  
                 </form>
-                <div className="info">Anda sudah punya akun? <Link to="/login/0">Masuk disini</Link></div>
-            </div>
+                <div className="txt">
+                        <a>Anda sudah punya akun?</a>
+                        <a id="p2" style={{cursor:'pointer'}} onClick={handleLogin}>&nbsp;Masuk disini</a>
+                    </div>
+                </div>
 
             </Col>
         </Row>
